@@ -2,6 +2,7 @@ rootProject.name = "HoldMaster"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
+    includeBuild("convention-plugins/base")
     repositories {
         google {
             mavenContent {
