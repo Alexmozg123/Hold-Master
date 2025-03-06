@@ -2,6 +2,7 @@ rootProject.name = "HoldMaster"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
+    includeBuild("gradle/convention-plugins")
     repositories {
         google {
             mavenContent {
@@ -29,3 +30,6 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":holdmaster-android")
+include(":holdmaster-shared")
+project(":holdmaster-shared").name = "HoldMasterIOShared"
