@@ -9,7 +9,7 @@ plugins.applyIfNeeded(libs.plugins.jetbrains.compose.multiplatform.get().pluginI
 kmpConfig {
     sourceSets {
         commonMain.dependencies {
-//            api(project(":core:uikit"))
+            api(project(":core:uikit"))
 
             implementation(composeExt.dependencies.components.resources)
             implementation(composeExt.dependencies.components.uiToolingPreview)

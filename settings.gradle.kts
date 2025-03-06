@@ -30,6 +30,8 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":core:utils")
+include(":core:uikit")
 include(":holdmaster-android")
 include(":holdmaster-shared")
 project(":holdmaster-shared").name = "HoldMasterIOShared"
