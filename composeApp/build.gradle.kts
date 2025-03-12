@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.holdmaster.kmplib)
     alias(libs.plugins.holdmaster.compose)
+    alias(libs.plugins.holdmaster.koin)
 }
 
 kotlin {
