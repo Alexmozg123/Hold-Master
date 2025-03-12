@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -62,6 +63,7 @@ private fun StartScreen(
             Text(
                 text = "Hello, HoldMaster!\nTimer: $currentTimer",
                 fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.primaryTextColor,
                 style = HoldMasterTheme.typography.headlineLarge
             )
