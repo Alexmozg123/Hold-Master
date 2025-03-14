@@ -1,10 +1,15 @@
 import SwiftUI
+import HoldMasterIOShared
 
 @main
 struct iOSApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var appDeledate: AppDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ComposeView(root: appDeledate.rootComponent).ignoresSafeArea(.keyboard)
         }
     }
 }

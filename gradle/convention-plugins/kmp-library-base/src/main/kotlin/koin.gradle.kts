@@ -6,8 +6,10 @@ kmpConfig {
         commonMain.dependencies {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.koin.android)
         }
 
         commonTest.dependencies {

@@ -12,40 +12,67 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.compose.KoinContext
-import org.koin.compose.viewmodel.koinViewModel
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.extensions.compose.stack.Children
+import com.arkivanov.decompose.extensions.compose.stack.animation.fade
+import com.arkivanov.decompose.extensions.compose.stack.animation.plus
+import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
+import com.arkivanov.decompose.extensions.compose.stack.animation.scale
+import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import ru.bortsov.holdmaster.composeapp.decompose.Root
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 
 @Composable
-fun HoldMasterApp() {
+fun HoldMasterApp(
+    component: Root,
+    modifier: Modifier = Modifier,
+) {
     HoldMasterTheme {
-        KoinContext {
-            val navController = rememberNavController()
-            NavHost(
-                navController = navController,
-                startDestination = "startScreen"
-            ) {
-                composable("startScreen") {
-                    val viewModel = koinViewModel<MainViewModel>()
-                    val state by viewModel.timer.collectAsState()
-                    StartScreen(state)
-                }
+        Children(component = component, modifier = modifier)
+    }
+}
+
+@OptIn(ExperimentalDecomposeApi::class)
+@Composable
+private fun Children(
+    component: Root,
+    modifier: Modifier = Modifier
+) {
+    Children(
+        stack = component.stack,
+        modifier = modifier,
+        animation = predictiveBackAnimation(
+            backHandler = component.backHandler,
+            fallbackAnimation = stackAnimation(fade() + scale()),
+            onBack = component::onBackClicked,
+        ),
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = HoldMasterTheme.colors.primaryBackground
+        ) {
+            when (val child = it.instance) {
+                Root.Child.SplashChild -> StartScreen(0)
+                is Root.Child.AuthChild -> Unit
+                is Root.Child.OnboardingChild -> Unit
+                is Root.Child.TabsChild -> Unit
+            }
+
+            val dialogSlot by component.slot.subscribeAsState()
+            when (val child = dialogSlot.child?.instance) {
+                is Root.SlotChild.ErrorDialogChild -> Unit
+                null -> Unit
             }
         }
     }
 }
-
 
 @Composable
 private fun StartScreen(
@@ -91,9 +118,4 @@ private fun StartScreen(
             }
         }
     }
-}
-
-@[Preview Composable]
-internal fun HoldMasterAppPreview() {
-    HoldMasterApp()
 }

@@ -6,12 +6,11 @@ android-minSdk = "24"
 android-targetSdk = "34"
 androidx-activityCompose = "1.10.1"
 androidx-appcompat = "1.7.0"
-androidx-constraintlayout = "2.2.1"
 androidx-core = "1.15.0"
 androidx-annotation = "1.9.1"
 androidx-espresso-core = "3.6.1"
-androidx-lifecycle = "2.8.4"
-jetbrains-lifecycle = "2.8.4"
+decompose = "3.1.0"
+essenty = "2.5.0"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 compose-multiplatform = "1.7.3"
@@ -38,18 +37,16 @@ androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
-jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-lifecycle" }
 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-compose =  { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
-koin-compose-viewmodel =  { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
-koin-compose-viewmodel-navigation =  { group = "io.insert-koin", name = "koin-compose-viewmodel-navigation", version.ref = "koin" }
 koin-test =  { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
+
+decompose-core = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-extensionsComposeJetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
+essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
 
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
@@ -104,7 +101,6 @@ holdmaster-kmplib-android = { id = "kmp.library.android" }
 holdmaster-kmplib-ios = { id = "kmp.library.ios" }
 holdmaster-kmplib = { id = "kmp.library.all" }
 
-holdmaster-koin-base = { id = "koin.base" }
-holdmaster-koin-android = { id = "koin.android" }
-holdmaster-koin-ios = { id = "koin.ios" }
-holdmaster-koin = { id = "koin.all" }
+holdmaster-koin = { id = "koin" }
+
+holdmaster-decompose = { id = "decompose" }

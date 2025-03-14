@@ -6,11 +6,26 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.composeApp)
-            // Необходимо явно добавить все зависимости для работы
-            // приложения на iOS, чтобы они попали в XCFramework
+            api(projects.composeApp)
+            api(libs.decompose.core)
+            api(libs.essenty.lifecycle)
+            api(libs.koin.core)
+
             implementation(compose.runtime)
             implementation(compose.ui)
         }
     }
+
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class)
+        .configureEach {
+            binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class)
+                .configureEach {
+                    if (baseName == project.name) {
+                        export(projects.composeApp)
+                        export(libs.decompose.core)
+                        export(libs.essenty.lifecycle)
+                        export(libs.koin.core)
+                    }
+                }
+        }
 }
