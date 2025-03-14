@@ -12,7 +12,7 @@ object Inject {
 
     fun createDependencies(tree: Koin) { _di = tree }
 
-    inline fun <reified T : Any> instance(): Lazy<T> = lazy { di.get<T>() }
+    inline fun <reified T : Any> instance(): Lazy<T> = di.inject<T>()
 
     /**
      * Важно: убираем lazy, inline и reified

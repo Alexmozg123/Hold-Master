@@ -18,6 +18,4 @@ internal val appModule = module {
     single<Onboarding.Factory> { OnboardingComponent.Factory() }
     single<ErrorDialog.Factory> { ErrorComponent.Factory() }
     single<Root.Factory> { RootComponent.Factory(get(), get(), get(), get()) }
-
-    single { "Hello koin!" }
 }
