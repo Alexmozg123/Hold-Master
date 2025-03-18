@@ -1,5 +1,7 @@
 package ru.bortsov.holdmaster.composeapp
 
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 import ru.bortsov.holdmaster.composeapp.decompose.Root
 import ru.bortsov.holdmaster.composeapp.decompose.RootComponent
@@ -13,9 +15,9 @@ import ru.bortsov.holdmaster.composeapp.error.ErrorComponent
 import ru.bortsov.holdmaster.composeapp.error.ErrorDialog
 
 internal val appModule = module {
-    single<Tabs.Factory> { TabsComponent.Factory() }
-    single<Auth.Factory> { AuthComponent.Factory() }
-    single<Onboarding.Factory> { OnboardingComponent.Factory() }
-    single<ErrorDialog.Factory> { ErrorComponent.Factory() }
-    single<Root.Factory> { RootComponent.Factory(get(), get(), get(), get()) }
+    singleOf(TabsComponent::Factory) bind Tabs.Factory::class
+    singleOf(AuthComponent::Factory) bind Auth.Factory::class
+    singleOf(OnboardingComponent::Factory) bind Onboarding.Factory::class
+    singleOf(ErrorComponent::Factory) bind ErrorDialog.Factory::class
+    singleOf(RootComponent::Factory) bind Root.Factory::class
 }
