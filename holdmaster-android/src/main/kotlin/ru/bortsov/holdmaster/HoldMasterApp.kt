@@ -1,8 +1,8 @@
 package ru.bortsov.holdmaster
 
 import android.app.Application
-import ru.bortsov.holdmaster.composeapp.PlatformConfig
 import ru.bortsov.holdmaster.composeapp.PlatformSDK
+import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
 
 class HoldMasterApp : Application() {
     override fun onCreate() {

@@ -10,18 +10,23 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import ru.bortsov.holdmaster.composeapp.decompose.feature.auth.Auth
 import ru.bortsov.holdmaster.composeapp.decompose.feature.onboarding.Onboarding
 import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.Tabs
+import ru.bortsov.holdmaster.composeapp.decompose.splash.Splash
 import ru.bortsov.holdmaster.composeapp.error.ErrorDialog
+import ru.bortsov.holdmaster.feature.photo.presentation.component.Photo
 
 class RootComponent(
     componentContext: ComponentContext,
+    private val splashComponentFactory: Splash.Factory,
     private val authComponentFactory: Auth.Factory,
     private val tabsComponentFactory: Tabs.Factory,
     private val onboardingComponentFactory: Onboarding.Factory,
-    private val errorDialogFactory: ErrorDialog.Factory
+    private val errorDialogFactory: ErrorDialog.Factory,
+    private val takePhotoFactory: Photo.Factory,
 ) : Root, ComponentContext by componentContext {
 
     private val _stackNav = StackNavigation<RootConfig.Stack>()
@@ -57,7 +62,14 @@ class RootComponent(
         componentContext: ComponentContext
     ): Root.Child = when (config) {
 
-        RootConfig.Stack.Splash -> Root.Child.SplashChild
+        RootConfig.Stack.Splash -> {
+            Root.Child.SplashChild(
+                splashComponentFactory(
+                    componentContext = componentContext,
+                    navigateToTakePhotoFeature = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) }
+                )
+            )
+        }
 
         RootConfig.Stack.Auth -> {
             Root.Child.AuthChild(authComponentFactory(componentContext))
@@ -69,6 +81,10 @@ class RootComponent(
 
         RootConfig.Stack.Tabs -> {
             Root.Child.TabsChild(tabsComponentFactory(componentContext))
+        }
+
+        RootConfig.Stack.TakePhoto -> {
+            Root.Child.TakePhotoChild(takePhotoFactory(componentContext))
         }
     }
 
@@ -82,18 +98,22 @@ class RootComponent(
     }
 
     class Factory(
+        private val splashComponentFactory: Splash.Factory,
         private val authComponentFactory: Auth.Factory,
         private val tabsComponentFactory: Tabs.Factory,
         private val onboardingComponentFactory: Onboarding.Factory,
         private val errorDialogFactory: ErrorDialog.Factory,
+        private val takePhotoFactory: Photo.Factory,
     ) : Root.Factory {
         override fun invoke(componentContext: ComponentContext): RootComponent {
             return RootComponent(
+                splashComponentFactory = splashComponentFactory,
                 componentContext = componentContext,
                 authComponentFactory = authComponentFactory,
                 tabsComponentFactory = tabsComponentFactory,
                 onboardingComponentFactory = onboardingComponentFactory,
                 errorDialogFactory = errorDialogFactory,
+                takePhotoFactory = takePhotoFactory,
             )
         }
     }

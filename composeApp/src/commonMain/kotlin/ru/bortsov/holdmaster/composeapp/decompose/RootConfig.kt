@@ -21,5 +21,7 @@ sealed interface RootConfig {
         data object Tabs : Stack
         @Serializable
         data object Auth : Stack
+        @Serializable
+        data object TakePhoto : Stack
     }
 }

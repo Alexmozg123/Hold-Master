@@ -8,7 +8,9 @@ import com.arkivanov.essenty.backhandler.BackHandlerOwner
 import ru.bortsov.holdmaster.composeapp.decompose.feature.auth.Auth
 import ru.bortsov.holdmaster.composeapp.decompose.feature.onboarding.Onboarding
 import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.Tabs
+import ru.bortsov.holdmaster.composeapp.decompose.splash.Splash
 import ru.bortsov.holdmaster.composeapp.error.ErrorDialog
+import ru.bortsov.holdmaster.feature.photo.presentation.component.Photo
 
 interface Root: BackHandlerOwner {
 
@@ -20,14 +22,15 @@ interface Root: BackHandlerOwner {
     fun onDismiss()
 
     sealed class Child {
-        data object SplashChild : Child()
+        class SplashChild(val component: Splash) : Child()
         class TabsChild(val component: Tabs) : Child()
         class AuthChild(val component: Auth) : Child()
         class OnboardingChild(val component: Onboarding) : Child()
+        class TakePhotoChild(val component: Photo) : Child()
     }
 
     sealed class SlotChild {
-        data class ErrorDialogChild(val component: ErrorDialog) : SlotChild()
+        class ErrorDialogChild(val component: ErrorDialog) : SlotChild()
     }
 
     fun interface Factory {
