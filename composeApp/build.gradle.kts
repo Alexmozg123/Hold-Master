@@ -14,6 +14,10 @@ kotlin {
             implementation(projects.feature.photo.data)
             implementation(projects.feature.photo.presentation)
         }
+
+        androidMain.dependencies {
+            api(projects.feature.photo.api)
+        }
     }
 }
 

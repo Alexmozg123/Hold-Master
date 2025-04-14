@@ -10,6 +10,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.feature.photo.api)
             implementation(projects.core.utils)
+            implementation(libs.coil.compose)
         }
     }
 }
