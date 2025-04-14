@@ -11,7 +11,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         PlatformSDK().doInit(config: PlatformConfig())
     
         // Получение фабрики корневого компонента через Koin
-        let factory = Inject().getRootFactory()
+        let factory = PlatformSDK().getRootFactory()
             
         // Создание корневого компонента
         rootComponent = factory.invoke(componentContext: DefaultComponentContext(lifecycle: ApplicationLifecycle()))
