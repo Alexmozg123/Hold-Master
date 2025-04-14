@@ -1,6 +1,5 @@
 package ru.bortsov.holdmaster.feature.photo.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.photo.presentation.component.Photo
@@ -41,11 +41,11 @@ fun TakePhotoScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            state.bitmap?.let { notNullBitmap ->
-                Image(
+            state.byteArray?.let { notNullImage ->
+                AsyncImage(
+                    model = notNullImage,
+                    contentDescription = "Image from ByteArray",
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-                    bitmap = notNullBitmap,
-                    contentDescription = "Some bitmap"
                 )
             } ?: Text(
                 text = "We don`t know where is a pic...",

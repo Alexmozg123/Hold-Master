@@ -7,5 +7,6 @@ import org.koin.dsl.module
 import ru.bortsov.holdmaster.feature.photo.api.PhotoRepository
 
 val photoDataModule: Module = module {
+    includes(platformPhotoModule)
     singleOf(::PhotoRepositoryImpl) bind PhotoRepository::class
 }

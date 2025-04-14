@@ -2,7 +2,12 @@ package ru.bortsov.holdmaster.feature.photo.presentation.component
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.decompose.value.update
 import com.arkivanov.essenty.instancekeeper.getOrCreate
+import com.arkivanov.essenty.lifecycle.doOnResume
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import ru.bortsov.holdmaster.core.utils.Handler
 import ru.bortsov.holdmaster.core.utils.componentCoroutineScope
@@ -24,10 +29,22 @@ internal class PhotoComponent(
     override val state: Value<PhotoState>
         get() = _state.state
 
-    init { _stateKeeperLazy.register(STATE_KEY, PhotoState.serializer()) { _state.state.value } }
+    init {
+        _stateKeeperLazy.register(STATE_KEY, PhotoState.serializer()) { _state.state.value }
+
+        lifecycle.doOnResume {
+            repository.getPhoto().onEach { image ->
+                println("image ON RESUME: $image")
+                _state.state.update { it.copy(byteArray = image) }
+            }.shareIn(
+                scope = componentScope,
+                started = SharingStarted.Eagerly
+            )
+        }
+    }
 
     override fun onTakePhotoClick() {
-        componentScope.launch { repository.takeAPhoto() }
+        componentScope.launch { repository.takePhoto() }
     }
 
     class Factory(
