@@ -12,6 +12,7 @@ kmpConfig {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.androidx.annotation)
             implementation(libs.kotlinx.datetime)
+            api(libs.loggin.napier)
         }
 
         commonTest.dependencies {

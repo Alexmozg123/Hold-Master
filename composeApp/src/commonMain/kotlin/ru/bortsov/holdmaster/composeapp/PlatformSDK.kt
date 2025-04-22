@@ -1,5 +1,7 @@
 package ru.bortsov.holdmaster.composeapp
 
+import io.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.Napier
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import ru.bortsov.holdmaster.composeapp.decompose.Root
@@ -13,6 +15,8 @@ object PlatformSDK {
     fun init(config: PlatformConfig) {
 
         val umbrellaModule = module { single<PlatformConfig> { config } }
+
+        Napier.base(DebugAntilog())
 
         Inject.createDependencies(
             koinApplication {
