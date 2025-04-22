@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
         ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val imageBitmap = result.data?.extras?.get("data") as? Bitmap
-                println("imageBitmap$imageBitmap")
                 imageBitmap?.let {
                     lifecycleScope.launch { photoPusher.pushPhoto(it) }
                 }
