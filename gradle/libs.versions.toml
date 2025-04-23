@@ -1,28 +1,35 @@
 [versions]
-agp = "8.9.0"
-android-compileSdk = "35"
+
+## KMP Compatibility guide <https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility>
+
+agp = "8.7.2"
+kotlin = "2.1.20"
+
 java = "17"
+android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "34"
 androidx-activityCompose = "1.10.1"
 androidx-appcompat = "1.7.0"
-androidx-constraintlayout = "2.2.1"
-androidx-core = "1.15.0"
+androidx-core = "1.16.0"
 androidx-annotation = "1.9.1"
 androidx-espresso-core = "3.6.1"
-androidx-lifecycle = "2.8.4"
-jetbrains-lifecycle = "2.8.4"
+decompose = "3.3.0"
+essenty = "2.5.0"
 androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
-compose-multiplatform = "1.8.0-alpha03"
+compose-multiplatform = "1.7.3"
 junit = "4.13.2"
 kotlinx-coroutines = "1.10.1"
 kotlinx-serialization = "1.8.0"
 kotlinx-datetime = "0.6.2"
 ktor = "3.1.1"
-kotlin = "2.1.10"
+koin = "4.1.0-Beta1"
 google-ksp = "2.1.10-1.0.30"
 manifestGuard = "1.0.0"
+activityKtx = "1.10.1"
+coil = "3.0.4"
+napier = "2.7.1"
 
 
 [libraries]
@@ -37,11 +44,21 @@ androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
-androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
-jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetbrains-lifecycle" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-compose =  { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-test =  { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
+
+decompose-core = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-extensionsComposeJetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
+essenty-lifecycle = { group = "com.arkivanov.essenty", name = "lifecycle", version.ref = "essenty" }
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+
+loggin-napier = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
@@ -95,3 +112,7 @@ holdmaster-kmplib-base = { id = "kmp.library.base" }
 holdmaster-kmplib-android = { id = "kmp.library.android" }
 holdmaster-kmplib-ios = { id = "kmp.library.ios" }
 holdmaster-kmplib = { id = "kmp.library.all" }
+
+holdmaster-koin = { id = "koin" }
+
+holdmaster-decompose = { id = "decompose" }

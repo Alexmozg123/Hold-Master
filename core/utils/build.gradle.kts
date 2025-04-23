@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.holdmaster.kmplib)
+    alias(libs.plugins.holdmaster.decompose)
 }
 
 kotlin {

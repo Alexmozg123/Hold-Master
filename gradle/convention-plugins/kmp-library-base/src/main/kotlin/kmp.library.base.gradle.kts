@@ -3,6 +3,7 @@ import utils.kmpConfig
 import utils.libs
 
 plugins.applyIfNeeded(libs.plugins.jetbrains.kotlin.multiplatform.get().pluginId)
+plugins.applyIfNeeded(libs.plugins.jetbrains.kotlin.serialization.get().pluginId)
 
 kmpConfig {
     sourceSets {
@@ -11,6 +12,7 @@ kmpConfig {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.androidx.annotation)
             implementation(libs.kotlinx.datetime)
+            api(libs.loggin.napier)
         }
 
         commonTest.dependencies {

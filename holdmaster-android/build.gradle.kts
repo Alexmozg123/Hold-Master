@@ -33,6 +33,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.decompose.core)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
     implementation(libs.androidx.activity.compose)
     implementation(projects.composeApp)
     implementation(libs.androidx.appcompat)

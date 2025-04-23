@@ -13,10 +13,6 @@ kmpConfig {
 
             implementation(composeExt.dependencies.components.resources)
             implementation(composeExt.dependencies.components.uiToolingPreview)
-
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.jetbrains.lifecycle.viewmodel.compose)
-            implementation(libs.androidx.lifecycle.runtime.compose)
         }
     }
 }

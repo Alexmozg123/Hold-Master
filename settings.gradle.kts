@@ -29,9 +29,18 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
-include(":core:utils")
-include(":core:uikit")
-include(":holdmaster-android")
-include(":holdmaster-shared")
+include(
+    ":core:base",
+    ":core:utils",
+    ":core:uikit",
+
+    ":feature:photo:api",
+    ":feature:photo:data",
+    ":feature:photo:presentation",
+
+    ":composeApp",
+    ":holdmaster-android",
+    ":holdmaster-shared",
+)
+
 project(":holdmaster-shared").name = "HoldMasterIOShared"
