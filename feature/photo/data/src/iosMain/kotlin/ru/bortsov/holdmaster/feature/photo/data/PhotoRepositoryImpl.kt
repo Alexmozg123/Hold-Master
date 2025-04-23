@@ -22,6 +22,7 @@ import platform.UIKit.UIImagePickerControllerOriginalImage
 import platform.UIKit.UIImagePickerControllerSourceType
 import platform.UIKit.UINavigationControllerDelegateProtocol
 import platform.darwin.NSObject
+import platform.darwin.TARGET_OS_SIMULATOR
 import platform.posix.memcpy
 import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
 import ru.bortsov.holdmaster.feature.photo.api.PhotoRepository
@@ -33,7 +34,6 @@ internal actual class PhotoRepositoryImpl actual constructor(
     private val _photoFlow = MutableStateFlow<ByteArray?>(null)
     private val scope = CoroutineScope(Dispatchers.Main)
 
-    // TODO: в этом месте падает
     private val imagePicker = UIImagePickerController()
     private val cameraDelegate = object : NSObject(),
         UIImagePickerControllerDelegateProtocol,
@@ -58,10 +58,7 @@ internal actual class PhotoRepositoryImpl actual constructor(
     }
 
     init {
-        imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeCamera)
-        imagePicker.setAllowsEditing(true)
-        imagePicker.setCameraCaptureMode(UIImagePickerControllerCameraCaptureMode.UIImagePickerControllerCameraCaptureModePhoto)
-        imagePicker.setDelegate(cameraDelegate)
+        initialSettings()
     }
 
     override fun getPhoto(): Flow<ByteArray> = _photoFlow.asStateFlow().filterNotNull()
@@ -71,6 +68,27 @@ internal actual class PhotoRepositoryImpl actual constructor(
             .keyWindow
             ?.rootViewController
             ?.presentViewController(imagePicker, true, null)
+    }
+
+    private fun initialSettings() {
+        imagePicker.setAllowsEditing(true)
+        imagePicker.setDelegate(cameraDelegate)
+
+        val isSimulator = TARGET_OS_SIMULATOR != 0
+        chooseSourceTypeForImagePicker(isSimulator)
+    }
+
+    /**
+     * Если стартовать на IOS симуляторе, то важно назначит галерею вместо камеры,
+     * так как на симуряторе нет симуляции камеры.
+     */
+    private fun chooseSourceTypeForImagePicker(isSimulator: Boolean) {
+        if (isSimulator) {
+            imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeSavedPhotosAlbum)
+        } else {
+            imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeCamera)
+            imagePicker.setCameraCaptureMode(UIImagePickerControllerCameraCaptureMode.UIImagePickerControllerCameraCaptureModePhoto)
+        }
     }
 
     @OptIn(ExperimentalForeignApi::class)
