@@ -9,6 +9,7 @@ import ru.bortsov.holdmaster.core.base.di.Inject
 import ru.bortsov.holdmaster.core.base.di.Inject.di
 import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
 import ru.bortsov.holdmaster.feature.auth.data.authModule
+import ru.bortsov.holdmaster.feature.auth.presentation.authPresentationModule
 import ru.bortsov.holdmaster.feature.photo.data.photoDataModule
 import ru.bortsov.holdmaster.feature.photo.presentation.photoPresentationModule
 
@@ -27,6 +28,7 @@ object PlatformSDK {
                     photoDataModule,
                     photoPresentationModule,
                     authModule,
+                    authPresentationModule,
                 )
             }.koin
         )

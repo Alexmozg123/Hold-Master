@@ -12,11 +12,11 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
-import ru.bortsov.holdmaster.composeapp.decompose.feature.auth.Auth
 import ru.bortsov.holdmaster.composeapp.decompose.feature.onboarding.Onboarding
 import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.Tabs
 import ru.bortsov.holdmaster.composeapp.decompose.splash.Splash
 import ru.bortsov.holdmaster.composeapp.error.ErrorDialog
+import ru.bortsov.holdmaster.feature.auth.presentation.navigation.Auth
 import ru.bortsov.holdmaster.feature.photo.presentation.component.Photo
 
 class RootComponent(

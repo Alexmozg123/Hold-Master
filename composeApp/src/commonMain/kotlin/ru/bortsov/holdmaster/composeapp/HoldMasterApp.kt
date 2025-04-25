@@ -16,6 +16,7 @@ import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import ru.bortsov.holdmaster.composeapp.decompose.Root
 import ru.bortsov.holdmaster.composeapp.decompose.splash.StartScreen
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
+import ru.bortsov.holdmaster.feature.auth.presentation.navigation.AuthUi
 import ru.bortsov.holdmaster.feature.photo.presentation.TakePhotoScreen
 
 @Composable
@@ -59,7 +60,11 @@ private fun Children(
                     component = child.component
                 )
 
-                is Root.Child.AuthChild -> Unit
+                is Root.Child.AuthChild -> AuthUi(
+                    modifier = modifier.fillMaxSize(),
+                    component = child.component
+                )
+
                 is Root.Child.OnboardingChild -> Unit
                 is Root.Child.TabsChild -> Unit
 
