@@ -34,7 +34,7 @@ fun AuthUi(
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = HoldMasterTheme.colors.primaryBackground
+            color = HoldMasterTheme.colors.secondaryBackground,
         ) {
             when (val child = it.instance) {
                 is Auth.Child.ConfirmChild -> ConfirmScreen(
