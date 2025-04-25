@@ -38,6 +38,10 @@ include(
     ":feature:photo:data",
     ":feature:photo:presentation",
 
+    ":feature:auth:api",
+    ":feature:auth:data",
+    ":feature:auth:presentation",
+
     ":composeApp",
     ":holdmaster-android",
     ":holdmaster-shared",
