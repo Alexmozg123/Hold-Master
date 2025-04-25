@@ -66,7 +66,8 @@ class RootComponent(
             Root.Child.SplashChild(
                 splashComponentFactory(
                     componentContext = componentContext,
-                    navigateToTakePhotoFeature = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) }
+                    navigateToTakePhotoFeature = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) },
+                    navigateToAuthFlowFeature = { _stackNav.pushNew(RootConfig.Stack.Auth) },
                 )
             )
         }

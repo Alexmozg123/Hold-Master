@@ -61,6 +61,27 @@ internal fun StartScreen(
                     )
                 }
             }
+
+            Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.small))
+
+            Card(
+                onClick = { component.onGoToAuthFlowFeature() },
+                modifier = Modifier.height(70.dp).width(150.dp),
+                shape = HoldMasterTheme.shapes.medium,
+                colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.secondaryBackground),
+                elevation = CardDefaults.cardElevation(defaultElevation = HoldMasterTheme.elevations.small)
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = "Go to AuthFeature",
+                        color = HoldMasterTheme.colors.accentTextColor,
+                        style = HoldMasterTheme.typography.titleSmall
+                    )
+                }
+            }
         }
     }
 }
