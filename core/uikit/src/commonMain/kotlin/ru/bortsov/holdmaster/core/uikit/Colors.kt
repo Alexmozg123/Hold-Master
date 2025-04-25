@@ -8,16 +8,14 @@ internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme() }
 
 internal fun lightColorScheme(): ColorScheme {
     return ColorScheme(
-        primaryBackground = Color(0xFFFFFFFF),
-        secondaryBackground = Color(0xFFF8F7FC),
-        darkAction = Color(0xFF34343C),
-        darkPressedAction = Color(0xFF40404A),
-        lightAction = Color(0xFFF4FAF7),
-        lightPressedAction = Color(0xFFCDE8D8),
-        primaryTextColor = Color(0xFF111114),
-        secondaryTextColor = Color(0xFFB1B4C2),
+        primaryBackground = Color(0xFFEDEEF0),
+        secondaryBackground = Color(0xFF1C1B22),
+        primaryTextColor = Color(0xFF000000),
+        secondaryTextColor = Color(0xFF909090),
+        thirdTextColor = Color(0xFFDADEE1),
         accentTextColor = Color(0xFF17B359),
-        disabledColor = Color(0xFFE9EAEE),
+        whiteColor = Color(0xFFFFFFFF),
+        errorColor = Color(0xFFFF0000),
     )
 }
 
@@ -25,14 +23,12 @@ internal fun darkColorScheme(): ColorScheme {
     return ColorScheme(
         primaryBackground = Color(0xFF111114),
         secondaryBackground = Color(0xFFF8F7FC),
-        darkAction = Color(0xFF34343C),
-        darkPressedAction = Color(0xFF40404A),
-        lightAction = Color(0xFF222225),
-        lightPressedAction = Color(0xFF2B2B30),
-        primaryTextColor = Color(0xFFFFFFFF),
+        primaryTextColor = Color(0xFF000000),
         secondaryTextColor = Color(0xFFB1B4C2),
+        thirdTextColor = Color(0xFF909090),
         accentTextColor = Color(0xFF17B359),
-        disabledColor = Color(0xFF3A3B40),
+        whiteColor = Color(0xFFFFFFFF),
+        errorColor = Color(0xFFFF0000),
     )
 }
 
@@ -40,12 +36,10 @@ internal fun darkColorScheme(): ColorScheme {
 data class ColorScheme(
     val primaryBackground: Color,
     val secondaryBackground: Color,
-    val darkAction: Color,
-    val darkPressedAction: Color,
-    val lightAction: Color,
-    val lightPressedAction: Color,
     val primaryTextColor: Color,
     val secondaryTextColor: Color,
+    val thirdTextColor: Color,
     val accentTextColor: Color,
-    val disabledColor: Color,
+    val whiteColor: Color,
+    val errorColor: Color,
 )

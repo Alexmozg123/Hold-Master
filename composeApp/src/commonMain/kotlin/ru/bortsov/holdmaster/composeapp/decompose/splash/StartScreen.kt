@@ -47,7 +47,7 @@ internal fun StartScreen(
                 onClick = { component.onGoToPhotoFeatureClick() },
                 modifier = Modifier.height(70.dp).width(150.dp),
                 shape = HoldMasterTheme.shapes.medium,
-                colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.darkAction),
+                colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.secondaryBackground),
                 elevation = CardDefaults.cardElevation(defaultElevation = HoldMasterTheme.elevations.small)
             ) {
                 Box(
