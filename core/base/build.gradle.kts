@@ -8,6 +8,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.core.utils)
+            implementation(projects.feature.auth.api)
+
             api(libs.settings.core)
             api(libs.settings.coroutines)
 
