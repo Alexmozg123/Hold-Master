@@ -8,6 +8,7 @@ import ru.bortsov.holdmaster.composeapp.decompose.Root
 import ru.bortsov.holdmaster.core.base.di.Inject
 import ru.bortsov.holdmaster.core.base.di.Inject.di
 import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
+import ru.bortsov.holdmaster.feature.auth.data.authModule
 import ru.bortsov.holdmaster.feature.photo.data.photoDataModule
 import ru.bortsov.holdmaster.feature.photo.presentation.photoPresentationModule
 
@@ -25,6 +26,7 @@ object PlatformSDK {
                     umbrellaModule,
                     photoDataModule,
                     photoPresentationModule,
+                    authModule,
                 )
             }.koin
         )
