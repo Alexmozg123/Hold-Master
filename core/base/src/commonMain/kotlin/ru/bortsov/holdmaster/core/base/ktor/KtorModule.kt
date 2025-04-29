@@ -18,6 +18,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
 import io.ktor.http.parameters
+import io.ktor.http.path
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.module.Module
@@ -72,7 +73,11 @@ internal val ktorModule: Module = module {
             }
 
             defaultRequest {
-                url { protocol = URLProtocol.HTTPS }
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = "holdmaster.ru"
+                    path("/api/")
+                }
                 header(HttpHeaders.ContentType, ContentType.Application.Json)
             }
         }
