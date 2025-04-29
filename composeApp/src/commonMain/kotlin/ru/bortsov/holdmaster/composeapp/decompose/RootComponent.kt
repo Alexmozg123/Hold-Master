@@ -72,9 +72,13 @@ class RootComponent(
             )
         }
 
-        RootConfig.Stack.Auth -> {
-            Root.Child.AuthChild(authComponentFactory(componentContext))
-        }
+        RootConfig.Stack.Auth -> Root.Child.AuthChild(
+            authComponentFactory(
+                componentContext = componentContext,
+                navigateToMain = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) }
+            )
+        )
+
 
         RootConfig.Stack.Onboarding -> {
             Root.Child.OnboardingChild(onboardingComponentFactory(componentContext))
