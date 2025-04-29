@@ -99,9 +99,13 @@ class RootComponent(
         config: RootConfig.Slot,
         componentContext: ComponentContext
     ): Root.SlotChild = when (config) {
-        is RootConfig.Slot.ErrorDialog -> {
-            Root.SlotChild.ErrorDialogChild(errorDialogFactory(componentContext))
-        }
+        is RootConfig.Slot.ErrorDialog -> Root.SlotChild.ErrorDialogChild(
+            errorDialogFactory(
+                componentContext = componentContext,
+                onDismiss = { _slotNav.dismiss() },
+                error = config.error
+            )
+        )
     }
 
     class Factory(

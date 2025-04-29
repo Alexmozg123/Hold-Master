@@ -15,6 +15,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import ru.bortsov.holdmaster.composeapp.decompose.Root
 import ru.bortsov.holdmaster.composeapp.decompose.splash.StartScreen
+import ru.bortsov.holdmaster.composeapp.error.ErrorAlert
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.auth.presentation.navigation.AuthUi
 import ru.bortsov.holdmaster.feature.photo.presentation.TakePhotoScreen
@@ -73,7 +74,7 @@ private fun Children(
 
             val dialogSlot by component.slot.subscribeAsState()
             when (val child = dialogSlot.child?.instance) {
-                is Root.SlotChild.ErrorDialogChild -> Unit
+                is Root.SlotChild.ErrorDialogChild -> ErrorAlert(component = child.component)
                 null -> Unit
             }
         }
