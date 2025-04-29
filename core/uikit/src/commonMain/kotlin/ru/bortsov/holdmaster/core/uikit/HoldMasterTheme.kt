@@ -1,7 +1,6 @@
 package ru.bortsov.holdmaster.core.uikit
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -32,7 +31,7 @@ object HoldMasterTheme {
         @[Composable ReadOnlyComposable] get() = LocalColorScheme.current
 
     val typography: Typography
-        @[Composable ReadOnlyComposable] get() = MaterialTheme.typography
+        @[Composable ReadOnlyComposable] get() = LocalTypography.current
 
     val shapes: Shapes
         @[Composable ReadOnlyComposable] get() = LocalShapes.current

@@ -12,10 +12,11 @@ internal val LocalTypography = staticCompositionLocalOf { typography() }
 internal fun typography(): Typography {
     return Typography(
         displayLarge = DefaultTextStyle.copy(
-            fontSize = 57.sp,
+            fontSize = 48.sp,
+            fontWeight = FontWeight.ExtraBold
         ),
         displayMedium = DefaultTextStyle.copy(
-            fontSize = 45.sp,
+            fontSize = 40.sp,
         ),
         displaySmall = DefaultTextStyle.copy(
             fontSize = 36.sp,
@@ -30,7 +31,7 @@ internal fun typography(): Typography {
             fontSize = 24.sp,
         ),
         titleLarge = DefaultTextStyle.copy(
-            fontSize = 22.sp,
+            fontSize = 20.sp,
         ),
         titleMedium = DefaultTextStyle.copy(
             fontSize = 18.sp,
@@ -57,7 +58,7 @@ internal fun typography(): Typography {
             fontSize = 14.sp,
         ),
         labelSmall = DefaultTextStyle.copy(
-            fontSize = 11.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Normal,
         ),
     )
