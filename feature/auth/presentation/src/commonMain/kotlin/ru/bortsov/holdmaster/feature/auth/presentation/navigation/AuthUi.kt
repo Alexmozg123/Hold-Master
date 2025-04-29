@@ -6,11 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.extensions.compose.stack.Children
-import com.arkivanov.decompose.extensions.compose.stack.animation.fade
-import com.arkivanov.decompose.extensions.compose.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
-import com.arkivanov.decompose.extensions.compose.stack.animation.scale
-import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.ConfirmScreen
 import ru.bortsov.holdmaster.feature.auth.presentation.forgot.ForgotScreen
@@ -28,7 +24,7 @@ fun AuthUi(
         modifier = modifier,
         animation = predictiveBackAnimation(
             backHandler = component.backHandler,
-            fallbackAnimation = stackAnimation(fade() + scale()),
+            fallbackAnimation = null,
             onBack = component::onBackClicked,
         ),
     ) {

@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import ru.bortsov.holdmaster.core.uikit.widgets.buttons.ButtonState
 import ru.bortsov.holdmaster.core.utils.BaseComponent
 import ru.bortsov.holdmaster.core.utils.ResultOf
 import ru.bortsov.holdmaster.core.utils.RootError
@@ -53,15 +54,15 @@ internal class LoginComponent(
     }
 
     private fun obtainLoginClicked() {
-        updateState { copy(isLoading = true) }
+        updateState { copy(buttonState = ButtonState.Loading) }
         scope.launch(Dispatchers.IO) {
             when (val result = authRepository.login(email = state.value.email, password = state.value.password)) {
                 is ResultOf.Success<Unit> -> withContext(Dispatchers.Main) {
-                    updateState { copy(isLoading = false) }
+                    updateState { copy(buttonState = ButtonState.Enabled) }
                     navigateToMain()
                 }
                 is ResultOf.Failure<AuthError.LoginError> -> withContext(Dispatchers.Main) {
-                    updateState { copy(isLoading = false) }
+                    updateState { copy(buttonState = ButtonState.Enabled) }
                     showError(result.error)
                 }
             }
