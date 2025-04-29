@@ -5,6 +5,12 @@ plugins {
     alias(libs.plugins.jetbrains.compose.compiler)
 }
 
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "ru.bortsov.holdmaster.core.uikit.resources"
+    generateResClass = auto
+}
+
 kotlin {
     sourceSets {
         commonMain.dependencies {

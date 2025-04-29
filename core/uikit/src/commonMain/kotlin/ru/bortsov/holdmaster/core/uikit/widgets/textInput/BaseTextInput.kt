@@ -25,6 +25,7 @@ fun BaseTextInput(
     shape: Shape = HoldMasterTheme.shapes.full,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     textStyle: TextStyle = HoldMasterTheme.typography.body1,
+    trailingIcon: @Composable (() -> Unit)? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     singleLine: Boolean = true,
     modifier: Modifier = Modifier,
@@ -44,6 +45,7 @@ fun BaseTextInput(
                 )
             }
         },
+        trailingIcon = trailingIcon,
         shape = shape,
         keyboardOptions = keyboardOptions,
         colors = TextFieldDefaults.colors(
