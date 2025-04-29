@@ -13,6 +13,7 @@ kotlin {
 
             api(libs.settings.core)
             api(libs.settings.coroutines)
+            implementation(libs.settings.noArg)
 
             api(libs.ktor.client.core)
             implementation(libs.ktor.client.auth)
