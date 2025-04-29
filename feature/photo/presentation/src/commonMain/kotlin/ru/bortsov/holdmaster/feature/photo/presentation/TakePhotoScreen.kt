@@ -52,7 +52,7 @@ fun TakePhotoScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.primaryTextColor,
-                style = HoldMasterTheme.typography.titleLarge
+                style = HoldMasterTheme.typography.h2
             )
 
             Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.medium))
@@ -62,7 +62,7 @@ fun TakePhotoScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.secondaryTextColor,
-                style = HoldMasterTheme.typography.bodyMedium
+                style = HoldMasterTheme.typography.body2
             )
 
             Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.medium))
@@ -81,7 +81,7 @@ fun TakePhotoScreen(
                     Text(
                         text = "Take a photo",
                         color = HoldMasterTheme.colors.accentTextColor,
-                        style = HoldMasterTheme.typography.titleSmall
+                        style = HoldMasterTheme.typography.h6
                     )
                 }
             }

@@ -6,7 +6,9 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
+import ru.bortsov.holdmaster.core.utils.RootError
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.Confirm
 import ru.bortsov.holdmaster.feature.auth.presentation.forgot.ForgotPassword
 import ru.bortsov.holdmaster.feature.auth.presentation.login.Login
@@ -14,10 +16,12 @@ import ru.bortsov.holdmaster.feature.auth.presentation.singUp.SingUp
 
 internal class AuthComponent(
     componentContext: ComponentContext,
+    private val navigateToMain: () -> Unit,
     private val loginComponentFactory: Login.Factory,
     private val signUpComponentFactory: SingUp.Factory,
     private val forgotComponentFactory: ForgotPassword.Factory,
     private val confirmComponentFactory: Confirm.Factory,
+    private val showError: (RootError) -> Unit,
 ) : Auth, ComponentContext by componentContext {
 
     private val _stackNav = StackNavigation<AuthConfig>()
@@ -41,7 +45,17 @@ internal class AuthComponent(
     ): Auth.Child = when (config) {
         AuthConfig.Confirm -> Auth.Child.ConfirmChild(confirmComponentFactory(componentContext))
         AuthConfig.Forgot -> Auth.Child.ForgotPasswordChild(forgotComponentFactory(componentContext))
-        AuthConfig.Login -> Auth.Child.LoginChild(loginComponentFactory(componentContext))
+
+        AuthConfig.Login -> Auth.Child.LoginChild(
+            loginComponentFactory(
+                componentContext = componentContext,
+                navigateToSignUp = { _stackNav.pushNew(AuthConfig.Forgot) },
+                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Confirm) },
+                navigateToMain = navigateToMain,
+                showError = showError,
+            )
+        )
+
         AuthConfig.SingUp -> Auth.Child.SingUpChild(signUpComponentFactory(componentContext))
     }
 
@@ -51,13 +65,19 @@ internal class AuthComponent(
         private val forgotComponentFactory: ForgotPassword.Factory,
         private val confirmComponentFactory: Confirm.Factory,
     ) : Auth.Factory {
-        override fun invoke(componentContext: ComponentContext): Auth {
+        override fun invoke(
+            componentContext: ComponentContext,
+            navigateToMain: () -> Unit,
+            showError: (RootError) -> Unit,
+        ): Auth {
             return AuthComponent(
                 componentContext = componentContext,
+                navigateToMain = navigateToMain,
                 loginComponentFactory = loginComponentFactory,
                 signUpComponentFactory = signUpComponentFactory,
                 forgotComponentFactory = forgotComponentFactory,
                 confirmComponentFactory = confirmComponentFactory,
+                showError = showError,
             )
         }
     }
