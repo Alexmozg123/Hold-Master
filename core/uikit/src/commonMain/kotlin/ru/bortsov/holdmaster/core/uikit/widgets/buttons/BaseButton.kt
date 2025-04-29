@@ -25,9 +25,9 @@ internal fun BaseButton(
     buttonText: String,
     buttonState: ButtonState,
     height: Dp = 60.dp,
-    shape: Shape = HoldMasterTheme.shapes.extraSmall,
+    shape: Shape = HoldMasterTheme.shapes.full,
     colors: ButtonColors = ButtonDefaults.buttonColors(),
-    textStyle: TextStyle = HoldMasterTheme.typography.titleLarge,
+    textStyle: TextStyle = HoldMasterTheme.typography.subtitle1,
     elevation: ButtonElevation = ButtonDefaults
         .elevatedButtonElevation(HoldMasterTheme.elevations.none)
 ) {

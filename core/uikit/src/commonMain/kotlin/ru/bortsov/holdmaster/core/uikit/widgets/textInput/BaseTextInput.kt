@@ -1,13 +1,13 @@
 package ru.bortsov.holdmaster.core.uikit.widgets.textInput
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -22,10 +22,9 @@ fun BaseTextInput(
     label: String? = null,
     labelAlign: TextAlign = TextAlign.Start,
     isEnabled: Boolean = true,
-    shape: Shape = HoldMasterTheme.shapes.extraSmall
-        .copy(bottomStart = ZeroCornerSize, bottomEnd = ZeroCornerSize),
+    shape: Shape = HoldMasterTheme.shapes.full,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    textStyle: TextStyle = HoldMasterTheme.typography.bodyLarge,
+    textStyle: TextStyle = HoldMasterTheme.typography.body1,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     singleLine: Boolean = true,
     modifier: Modifier = Modifier,
@@ -35,7 +34,7 @@ fun BaseTextInput(
         onValueChange = onValueChange,
         modifier = modifier.fillMaxWidth(),
         enabled = isEnabled,
-        label = {
+        placeholder = {
             label?.let {
                 Text(
                     text = it,
@@ -47,16 +46,20 @@ fun BaseTextInput(
         },
         shape = shape,
         keyboardOptions = keyboardOptions,
-        colors = TextFieldDefaults.colors(),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = HoldMasterTheme.colors.whiteColor,
+            unfocusedContainerColor = HoldMasterTheme.colors.whiteColor,
+            cursorColor = HoldMasterTheme.colors.primaryTextColor,
+            focusedTextColor = HoldMasterTheme.colors.primaryTextColor,
+            unfocusedTextColor = HoldMasterTheme.colors.secondaryTextColor,
+            unfocusedPlaceholderColor = HoldMasterTheme.colors.thirdTextColor,
+            focusedPlaceholderColor = HoldMasterTheme.colors.secondaryTextColor,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+        ),
         textStyle = textStyle,
         visualTransformation = visualTransformation,
         singleLine = singleLine
     )
-//    backgroundColor = HoldMasterTheme.colors.accentTextColor.copy(alpha = 0.1f),
-//    cursorColor = HoldMasterTheme.colors.accentTextColor,
-//    textColor = HoldMasterTheme.colors.primaryTextColor,
-//    unfocusedIndicatorColor = HoldMasterTheme.colors.secondaryTextColor,
-//    focusedIndicatorColor = HoldMasterTheme.colors.accentTextColor,
-//    focusedLabelColor =  HoldMasterTheme.colors.accentTextColor,
-//    unfocusedLabelColor = HoldMasterTheme.colors.secondaryTextColor
 }

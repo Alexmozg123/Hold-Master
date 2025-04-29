@@ -1,7 +1,6 @@
 package ru.bortsov.holdmaster.core.uikit
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -10,7 +9,7 @@ import androidx.compose.runtime.ReadOnlyComposable
 fun HoldMasterTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     colors: ColorScheme = if (isDarkTheme) darkColorScheme() else lightColorScheme(),
-    typography: Typography = typography(),
+    typography: CustomTypography = typography(),
     elevations: Elevations = elevations(),
     spaces: Spaces = spaces(),
     shapes: Shapes = shapes(),
@@ -30,7 +29,7 @@ object HoldMasterTheme {
     val colors: ColorScheme
         @[Composable ReadOnlyComposable] get() = LocalColorScheme.current
 
-    val typography: Typography
+    val typography: CustomTypography
         @[Composable ReadOnlyComposable] get() = LocalTypography.current
 
     val shapes: Shapes

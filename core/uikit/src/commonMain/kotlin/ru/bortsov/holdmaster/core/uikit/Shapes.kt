@@ -16,7 +16,7 @@ internal fun shapes(): Shapes {
         medium = RoundedCornerShape(size = 12.dp),
         large = RoundedCornerShape(size = 16.dp),
         extraLarge = RoundedCornerShape(size = 28.dp),
-        full = RoundedCornerShape(percent = 50),
+        full = RoundedCornerShape(percent = 100),
     )
 }
 

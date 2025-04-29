@@ -18,8 +18,8 @@ fun DarkButton(
         modifier = modifier,
         buttonState = buttonState,
         colors = ButtonDefaults.buttonColors(
-            contentColor = HoldMasterTheme.colors.primaryBackground,
-            containerColor = HoldMasterTheme.colors.whiteColor,
+            contentColor = HoldMasterTheme.colors.whiteColor,
+            containerColor = HoldMasterTheme.colors.secondaryBackground,
             disabledContentColor = HoldMasterTheme.colors.secondaryTextColor,
             disabledContainerColor = HoldMasterTheme.colors.secondaryTextColor
         )

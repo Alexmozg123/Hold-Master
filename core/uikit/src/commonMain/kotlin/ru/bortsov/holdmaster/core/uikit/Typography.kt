@@ -1,6 +1,6 @@
 package ru.bortsov.holdmaster.core.uikit
 
-import androidx.compose.material3.Typography
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -9,62 +9,65 @@ import androidx.compose.ui.unit.sp
 
 internal val LocalTypography = staticCompositionLocalOf { typography() }
 
-internal fun typography(): Typography {
-    return Typography(
-        displayLarge = DefaultTextStyle.copy(
+internal fun typography(): CustomTypography {
+    return CustomTypography(
+        h1 = DefaultTextStyle.copy(
             fontSize = 48.sp,
             fontWeight = FontWeight.ExtraBold
         ),
-        displayMedium = DefaultTextStyle.copy(
+        h2 = DefaultTextStyle.copy(
             fontSize = 40.sp,
+            fontWeight = FontWeight.Medium,
         ),
-        displaySmall = DefaultTextStyle.copy(
+        h3 = DefaultTextStyle.copy(
             fontSize = 36.sp,
+            fontWeight = FontWeight.Medium,
         ),
-        headlineLarge = DefaultTextStyle.copy(
+        h4 = DefaultTextStyle.copy(
             fontSize = 32.sp,
+            fontWeight = FontWeight.Medium,
         ),
-        headlineMedium = DefaultTextStyle.copy(
+        h5 = DefaultTextStyle.copy(
             fontSize = 28.sp,
+            fontWeight = FontWeight.Medium,
         ),
-        headlineSmall = DefaultTextStyle.copy(
+        h6 = DefaultTextStyle.copy(
             fontSize = 24.sp,
         ),
-        titleLarge = DefaultTextStyle.copy(
+        subtitle1 = DefaultTextStyle.copy(
             fontSize = 20.sp,
         ),
-        titleMedium = DefaultTextStyle.copy(
+        subtitle2 = DefaultTextStyle.copy(
             fontSize = 18.sp,
         ),
-        titleSmall = DefaultTextStyle.copy(
+        body1 = DefaultTextStyle.copy(
             fontSize = 16.sp,
         ),
-        bodyLarge = DefaultTextStyle.copy(
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Normal,
-        ),
-        bodyMedium = DefaultTextStyle.copy(
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Normal,
-        ),
-        bodySmall = DefaultTextStyle.copy(
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Normal,
-        ),
-        labelLarge = DefaultTextStyle.copy(
-            fontSize = 16.sp,
-        ),
-        labelMedium = DefaultTextStyle.copy(
+        body2 = DefaultTextStyle.copy(
             fontSize = 14.sp,
         ),
-        labelSmall = DefaultTextStyle.copy(
+        caption = DefaultTextStyle.copy(
             fontSize = 12.sp,
-            fontWeight = FontWeight.Normal,
-        ),
+        )
     )
 }
 
+@Immutable
+data class CustomTypography(
+    val h1: TextStyle,
+    val h2: TextStyle,
+    val h3: TextStyle,
+    val h4: TextStyle,
+    val h5: TextStyle,
+    val h6: TextStyle,
+    val subtitle1: TextStyle,
+    val subtitle2: TextStyle,
+    val body1: TextStyle,
+    val body2: TextStyle,
+    val caption: TextStyle,
+)
+
 private val DefaultTextStyle = TextStyle(
-    fontFamily = FontFamily.SansSerif,
-    fontWeight = FontWeight.Medium,
+    fontFamily = FontFamily.Default,
+    fontWeight = FontWeight.Normal,
 )
