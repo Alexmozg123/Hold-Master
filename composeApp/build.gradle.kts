@@ -9,6 +9,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.core.base)
+            implementation(projects.core.utils)
 
             implementation(projects.feature.photo.api)
             implementation(projects.feature.photo.data)

@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
@@ -35,17 +35,17 @@ internal fun StartScreen(
         ) {
             Text(
                 text = "Hello, HoldMaster!",
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.ExtraBold,
                 textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.primaryTextColor,
-                style = HoldMasterTheme.typography.headlineLarge
+                style = HoldMasterTheme.typography.h3
             )
 
-            Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.medium))
+            Spacer(modifier = Modifier.height(44.dp))
 
             Card(
                 onClick = { component.onGoToPhotoFeatureClick() },
-                modifier = Modifier.height(70.dp).width(150.dp),
+                modifier = Modifier.height(60.dp).padding(horizontal = 70.dp),
                 shape = HoldMasterTheme.shapes.medium,
                 colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.secondaryBackground),
                 elevation = CardDefaults.cardElevation(defaultElevation = HoldMasterTheme.elevations.small)
@@ -57,16 +57,16 @@ internal fun StartScreen(
                     Text(
                         text = "Go to PhotoFeature",
                         color = HoldMasterTheme.colors.accentTextColor,
-                        style = HoldMasterTheme.typography.titleSmall
+                        style = HoldMasterTheme.typography.subtitle2
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.small))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Card(
                 onClick = { component.onGoToAuthFlowFeature() },
-                modifier = Modifier.height(70.dp).width(150.dp),
+                modifier = Modifier.height(60.dp).padding(horizontal = 70.dp),
                 shape = HoldMasterTheme.shapes.medium,
                 colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.secondaryBackground),
                 elevation = CardDefaults.cardElevation(defaultElevation = HoldMasterTheme.elevations.small)
@@ -78,7 +78,7 @@ internal fun StartScreen(
                     Text(
                         text = "Go to AuthFeature",
                         color = HoldMasterTheme.colors.accentTextColor,
-                        style = HoldMasterTheme.typography.titleSmall
+                        style = HoldMasterTheme.typography.subtitle2
                     )
                 }
             }

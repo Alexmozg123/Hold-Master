@@ -3,6 +3,7 @@ package ru.bortsov.holdmaster.composeapp.decompose
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.slot.SlotNavigation
+import com.arkivanov.decompose.router.slot.activate
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -75,7 +76,8 @@ class RootComponent(
         RootConfig.Stack.Auth -> Root.Child.AuthChild(
             authComponentFactory(
                 componentContext = componentContext,
-                navigateToMain = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) }
+                navigateToMain = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) },
+                showError = { _slotNav.activate(RootConfig.Slot.ErrorDialog(it)) }
             )
         )
 

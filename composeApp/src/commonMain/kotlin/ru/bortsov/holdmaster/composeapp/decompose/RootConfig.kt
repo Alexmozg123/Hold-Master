@@ -1,6 +1,7 @@
 package ru.bortsov.holdmaster.composeapp.decompose
 
 import kotlinx.serialization.Serializable
+import ru.bortsov.holdmaster.core.utils.RootError
 
 @Serializable
 sealed interface RootConfig {
@@ -8,7 +9,7 @@ sealed interface RootConfig {
     @Serializable
     sealed interface Slot : RootConfig {
         @Serializable
-        data class ErrorDialog(val error: String) : Slot
+        data class ErrorDialog(val error: RootError) : Slot
     }
 
     @Serializable
