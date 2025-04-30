@@ -59,7 +59,7 @@ internal class AuthComponent(
             loginComponentFactory(
                 componentContext = componentContext,
                 navigateToSignUp = { _stackNav.pushNew(AuthConfig.SingUp) },
-                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Forgot) },
+                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Confirm) },
                 navigateToMain = navigateToMain,
                 showError = showError,
             )
