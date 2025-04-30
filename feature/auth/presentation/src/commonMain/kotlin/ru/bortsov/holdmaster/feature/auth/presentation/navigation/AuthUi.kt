@@ -66,6 +66,7 @@ fun AuthUi(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(top = 16.dp)
                         .background(
                             color = HoldMasterTheme.colors.primaryBackground,
                             shape = RoundedCornerShape(
@@ -79,7 +80,7 @@ fun AuthUi(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(28.dp)
+                            .padding(horizontal = 28.dp)
                     ) {
                         when (val child = it.instance) {
                             is Auth.Child.LoginChild -> {

@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
 import ru.bortsov.holdmaster.core.utils.RootError
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.Confirm
@@ -49,14 +50,21 @@ internal class AuthComponent(
         AuthConfig.Login -> Auth.Child.LoginChild(
             loginComponentFactory(
                 componentContext = componentContext,
-                navigateToSignUp = { _stackNav.pushNew(AuthConfig.Forgot) },
-                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Confirm) },
+                navigateToSignUp = { _stackNav.pushNew(AuthConfig.SingUp) },
+                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Forgot) },
                 navigateToMain = navigateToMain,
                 showError = showError,
             )
         )
 
-        AuthConfig.SingUp -> Auth.Child.SingUpChild(signUpComponentFactory(componentContext))
+        AuthConfig.SingUp -> Auth.Child.SingUpChild(
+            signUpComponentFactory(
+                componentContext = componentContext,
+                navigateToLogin = { _stackNav.replaceAll(AuthConfig.Login) },
+                navigateToConfirm = { _stackNav.pushNew(AuthConfig.SingUp) },
+                showError = showError,
+            )
+        )
     }
 
     class Factory(

@@ -27,8 +27,7 @@ internal class LoginComponent(
     serializer = LoginState.serializer()
 ) {
 
-    override val state: Value<LoginState>
-        get() = viewState
+    override val state: Value<LoginState> get() = viewState
 
     override fun obtainEvent(event: LoginEvent) {
         when (event) {
