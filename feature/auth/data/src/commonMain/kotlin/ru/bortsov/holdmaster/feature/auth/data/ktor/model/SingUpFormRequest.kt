@@ -11,9 +11,6 @@ data class SingUpFormRequest(
     @SerialName("lastName") val lastName: String,
     @SerialName("password") val password: String,
     @SerialName("email") val email: String,
-    @SerialName("phone") val phone: String,
-    @SerialName("parking") val parking: String,
-    @SerialName("inn") val inn: String,
 )
 
 fun SingUpForm.toSingUpFormRequest() = SingUpFormRequest(
@@ -22,7 +19,4 @@ fun SingUpForm.toSingUpFormRequest() = SingUpFormRequest(
     lastName = lastName,
     password = password,
     email = email,
-    phone = phone,
-    parking = parking.name,
-    inn = inn,
 )
