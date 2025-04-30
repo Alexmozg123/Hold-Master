@@ -72,9 +72,7 @@ internal fun ForgotScreen(
             }
         }
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
+        Row {
             Image(
                 painter = painterResource(Res.drawable.camera_icon),
                 modifier = Modifier.size(32.dp),

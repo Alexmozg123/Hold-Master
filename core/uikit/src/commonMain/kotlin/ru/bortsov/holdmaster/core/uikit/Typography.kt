@@ -17,15 +17,15 @@ internal fun typography(): CustomTypography {
         ),
         h2 = DefaultTextStyle.copy(
             fontSize = 40.sp,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Bold,
         ),
         h3 = DefaultTextStyle.copy(
             fontSize = 36.sp,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Bold,
         ),
         h4 = DefaultTextStyle.copy(
             fontSize = 32.sp,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Bold,
         ),
         h5 = DefaultTextStyle.copy(
             fontSize = 28.sp,
