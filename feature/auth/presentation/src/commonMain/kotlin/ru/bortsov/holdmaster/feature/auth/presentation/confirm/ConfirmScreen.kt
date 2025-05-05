@@ -129,7 +129,7 @@ internal fun ConfirmScreen(
                 elevation = CardDefaults.cardElevation(HoldMasterTheme.elevations.none)
             ) {
                 Text(
-                    modifier = Modifier.padding(4.dp),
+                    modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
                     text = "Отправить код повторно",
                     style = HoldMasterTheme.typography.body1,
                     color = HoldMasterTheme.colors.accentTextColor,
@@ -139,7 +139,7 @@ internal fun ConfirmScreen(
             Text(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 text = "До отправки нового кода ${state.timer} c",
-                style = HoldMasterTheme.typography.body1,
+                style = HoldMasterTheme.typography.body2,
                 color = HoldMasterTheme.colors.secondaryTextColor,
             )
         }
