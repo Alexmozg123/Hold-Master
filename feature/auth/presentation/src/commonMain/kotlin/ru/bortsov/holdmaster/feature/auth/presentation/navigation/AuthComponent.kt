@@ -44,7 +44,14 @@ internal class AuthComponent(
         config: AuthConfig,
         componentContext: ComponentContext
     ): Auth.Child = when (config) {
-        AuthConfig.Confirm -> Auth.Child.ConfirmChild(confirmComponentFactory(componentContext))
+
+        AuthConfig.Confirm -> Auth.Child.ConfirmChild(
+            confirmComponentFactory(
+                componentContext = componentContext,
+                navigateToLogin = { _stackNav.replaceAll(AuthConfig.Login) },
+                showError = showError,
+            )
+        )
 
         AuthConfig.Forgot -> Auth.Child.ForgotPasswordChild(
             forgotComponentFactory(

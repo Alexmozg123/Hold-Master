@@ -2,6 +2,7 @@ package ru.bortsov.holdmaster.feature.auth.presentation.confirm
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.Value
+import ru.bortsov.holdmaster.core.utils.RootError
 
 internal interface Confirm {
 
@@ -17,6 +18,10 @@ internal interface Confirm {
     }
 
     fun interface Factory {
-        operator fun invoke(componentContext: ComponentContext): Confirm
+        operator fun invoke(
+            componentContext: ComponentContext,
+            navigateToLogin: () -> Unit,
+            showError: (RootError) -> Unit,
+        ): Confirm
     }
 }

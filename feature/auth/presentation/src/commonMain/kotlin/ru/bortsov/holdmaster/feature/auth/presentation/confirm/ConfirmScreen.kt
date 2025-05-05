@@ -1,8 +1,14 @@
 package ru.bortsov.holdmaster.feature.auth.presentation.confirm
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,14 +29,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
@@ -38,7 +43,6 @@ import holdmaster.feature.auth.presentation.generated.resources.Res
 import holdmaster.feature.auth.presentation.generated.resources.camera_icon
 import org.jetbrains.compose.resources.painterResource
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
-import ru.bortsov.holdmaster.core.uikit.widgets.buttons.DarkButton
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.Confirm.ConfirmEvent
 
 @Composable
@@ -47,6 +51,7 @@ internal fun ConfirmScreen(
     component: Confirm,
 ) {
     val state by component.state.subscribeAsState()
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Column(
         modifier = modifier
@@ -110,53 +115,57 @@ internal fun ConfirmScreen(
         ConfirmTextInput(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             confirmCode = state.confirmCode,
+            isLoading = state.isLoading,
             onValueChange = { component.obtainEvent(ConfirmEvent.CodeTextChanged(it)) },
+            onReady = { component.obtainEvent(ConfirmEvent.OnConfirmClicked) }
         )
 
         Spacer(modifier = Modifier.height(44.dp))
-
-        DarkButton(
-            onClick = { component.obtainEvent(ConfirmEvent.OnConfirmClicked) },
-            buttonText = "Отправить код",
-            buttonState = state.buttonState,
-        )
     }
 }
 
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ConfirmTextInput(
     modifier: Modifier = Modifier,
+    isLoading: Boolean = false,
+    confirmCodeLength: Int = 4,
     confirmCode: String,
     onValueChange: (String) -> Unit,
+    onReady: () -> Unit,
 ) {
-    val focusRequester = remember { FocusRequester() }
+    val keyboardController = LocalSoftwareKeyboardController.current
 
-    Box(
-        modifier = modifier.clickable { focusRequester.requestFocus() }
+    LaunchedEffect(confirmCode) {
+        if (confirmCode.length == confirmCodeLength) {
+            keyboardController?.hide()
+            onReady()
+        }
+    }
+
+    BasicTextField(
+        value = confirmCode,
+        onValueChange = {
+            if (it.length <= confirmCodeLength && it.all(Char::isLetterOrDigit)) {
+                onValueChange(it)
+            }
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+        modifier = modifier
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            repeat(4) { index ->
+            repeat(confirmCodeLength) { index ->
                 val char = confirmCode.getOrNull(index)
-                SymbolWindow(value = char?.takeIf { it.isLetterOrDigit() } ?: ' ')
+                SymbolWindow(
+                    value = char?.takeIf { it.isLetterOrDigit() } ?: ' ',
+                    isLoading = isLoading
+                )
             }
         }
-
-        BasicTextField(
-            value = confirmCode,
-            onValueChange = {
-                if (it.length <= 4 && it.all { c -> c.isLetterOrDigit() }) {
-                    onValueChange(it)
-                }
-            },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-            modifier = Modifier
-                .focusRequester(focusRequester)
-                .size(0.dp)
-                .alpha(0f)
-        )
     }
 }
 
@@ -164,12 +173,34 @@ private fun ConfirmTextInput(
 private fun SymbolWindow(
     modifier: Modifier = Modifier,
     value: Char,
+    isLoading: Boolean,
 ) {
+    val infiniteTransition = rememberInfiniteTransition(label = "LoadingPulse")
+
+    val animatedAlpha by infiniteTransition.animateFloat(
+        initialValue = 1f,
+        targetValue = 0.4f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 500, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "AlphaPulse"
+    )
+
+    val backgroundColor = if (value.isLetterOrDigit()) {
+        HoldMasterTheme.colors.accentTextColor.copy(alpha = 0.3f)
+    } else {
+        HoldMasterTheme.colors.whiteColor
+    }
+
     Box(
         modifier = modifier
             .size(width = 76.dp, height = 104.dp)
+            .graphicsLayer {
+                alpha = if (isLoading) animatedAlpha else 1f
+            }
             .background(
-                color = HoldMasterTheme.colors.whiteColor,
+                color = backgroundColor,
                 shape = HoldMasterTheme.shapes.extraLarge
             ),
         contentAlignment = Alignment.Center,
