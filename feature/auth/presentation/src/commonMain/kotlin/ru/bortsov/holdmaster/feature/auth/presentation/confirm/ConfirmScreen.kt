@@ -51,10 +51,9 @@ internal fun ConfirmScreen(
     component: Confirm,
 ) {
     val state by component.state.subscribeAsState()
-    val keyboardController = LocalSoftwareKeyboardController.current
 
     Column(
-        modifier = modifier
+        modifier = Modifier
             .verticalScroll(rememberScrollState())
             .padding(bottom = 36.dp),
         horizontalAlignment = Alignment.Start,
@@ -120,7 +119,30 @@ internal fun ConfirmScreen(
             onReady = { component.obtainEvent(ConfirmEvent.OnConfirmClicked) }
         )
 
-        Spacer(modifier = Modifier.height(44.dp))
+        Spacer(modifier = Modifier.height(32.dp))
+
+        if (state.isTimeUp) {
+            Card(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                onClick = { component.obtainEvent(ConfirmEvent.OnRetrySendClicked) },
+                colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                elevation = CardDefaults.cardElevation(HoldMasterTheme.elevations.none)
+            ) {
+                Text(
+                    modifier = Modifier.padding(4.dp),
+                    text = "Отправить код повторно",
+                    style = HoldMasterTheme.typography.body1,
+                    color = HoldMasterTheme.colors.accentTextColor,
+                )
+            }
+        } else {
+            Text(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                text = "До отправки нового кода ${state.timer} c",
+                style = HoldMasterTheme.typography.body1,
+                color = HoldMasterTheme.colors.secondaryTextColor,
+            )
+        }
     }
 }
 

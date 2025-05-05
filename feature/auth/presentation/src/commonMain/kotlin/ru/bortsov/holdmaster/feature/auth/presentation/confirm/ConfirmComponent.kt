@@ -27,11 +27,13 @@ internal class ConfirmComponent(
 
     override val state: Value<ConfirmState> get() = viewState
 
+    init { startTimer() }
+
     override fun obtainEvent(event: ConfirmEvent) {
         when (event) {
             is ConfirmEvent.CodeTextChanged -> obtainCodeTextChanged(event.value)
             ConfirmEvent.OnConfirmClicked -> obtainConfirmClicked()
-            ConfirmEvent.OnRetrySendClicked -> TODO()
+            ConfirmEvent.OnRetrySendClicked -> obtainRetrySendClicked()
             ConfirmEvent.OnBackClicked -> navigateToLogin()
         }
     }
@@ -39,7 +41,6 @@ internal class ConfirmComponent(
     private fun obtainConfirmClicked() {
         updateState { copy(isLoading = true) }
         scope.launch(Dispatchers.IO) {
-            delay(3000)
             when (val result = authRepository.sendConfirmCode(code = state.value.confirmCode)) {
                 is ResultOf.Success<Unit> -> withContext(Dispatchers.Main) {
                     updateState { copy(isLoading = false) }
@@ -54,11 +55,25 @@ internal class ConfirmComponent(
     }
 
     private fun obtainRetrySendClicked() {
-        updateState { copy(isLoading = true) }
+        updateState { copy(isTimeUp = false) }
+        scope.launch(Dispatchers.IO) {
+            // TODO: Необходимо написать метод для повторной отправки кода
+        }
+        startTimer()
     }
 
     private fun obtainCodeTextChanged(value: String) {
         updateState { copy(confirmCode = value) }
+    }
+
+    private fun startTimer() {
+        scope.launch(Dispatchers.IO) {
+            repeat(ConfirmState.TIMER_DURATION) {
+                delay(1000)
+                updateState { copy(timer = timer - 1) }
+            }
+            updateState { copy(isTimeUp = true, timer = ConfirmState.TIMER_DURATION) }
+        }
     }
 
     class Factory(
