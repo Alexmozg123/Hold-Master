@@ -9,10 +9,15 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.core.base)
+            implementation(projects.core.utils)
 
             implementation(projects.feature.photo.api)
             implementation(projects.feature.photo.data)
             implementation(projects.feature.photo.presentation)
+
+            implementation(projects.feature.auth.api)
+            implementation(projects.feature.auth.data)
+            implementation(projects.feature.auth.presentation)
         }
 
         androidMain.dependencies {

@@ -4,8 +4,8 @@ plugins {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.androidx.activity.ktx)
+        commonMain.dependencies {
+            implementation(projects.core.utils)
         }
     }
 }

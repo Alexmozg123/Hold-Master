@@ -52,7 +52,7 @@ fun TakePhotoScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.primaryTextColor,
-                style = HoldMasterTheme.typography.titleLarge
+                style = HoldMasterTheme.typography.h2
             )
 
             Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.medium))
@@ -62,7 +62,7 @@ fun TakePhotoScreen(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 color = HoldMasterTheme.colors.secondaryTextColor,
-                style = HoldMasterTheme.typography.bodyMedium
+                style = HoldMasterTheme.typography.body2
             )
 
             Spacer(modifier = Modifier.height(HoldMasterTheme.spaces.medium))
@@ -71,7 +71,7 @@ fun TakePhotoScreen(
                 onClick = { component.onTakePhotoClick() },
                 modifier = Modifier.height(70.dp).width(150.dp),
                 shape = HoldMasterTheme.shapes.medium,
-                colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.darkAction),
+                colors = CardDefaults.cardColors(containerColor = HoldMasterTheme.colors.secondaryBackground),
                 elevation = CardDefaults.cardElevation(defaultElevation = HoldMasterTheme.elevations.small)
             ) {
                 Box(
@@ -81,7 +81,7 @@ fun TakePhotoScreen(
                     Text(
                         text = "Take a photo",
                         color = HoldMasterTheme.colors.accentTextColor,
-                        style = HoldMasterTheme.typography.titleSmall
+                        style = HoldMasterTheme.typography.h6
                     )
                 }
             }
