@@ -14,9 +14,6 @@ interface Auth : BackHandlerOwner {
 
     val stack: Value<ChildStack<*, Child>>
 
-    fun onBackClicked()
-    fun onBackClicked(toIndex: Int)
-
     sealed class Child {
         internal class LoginChild(val component: Login) : Child()
         internal class SingUpChild(val component: SingUp) : Child()

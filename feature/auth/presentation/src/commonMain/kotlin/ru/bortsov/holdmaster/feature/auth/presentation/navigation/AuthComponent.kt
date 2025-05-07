@@ -4,8 +4,6 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
-import com.arkivanov.decompose.router.stack.pop
-import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
@@ -33,12 +31,9 @@ internal class AuthComponent(
         source = _stackNav,
         initialConfiguration = AuthConfig.Login,
         serializer = AuthConfig.serializer(),
+        handleBackButton = true,
         childFactory = ::childStackFactory,
     )
-
-    override fun onBackClicked() = _stackNav.pop()
-
-    override fun onBackClicked(toIndex: Int) = _stackNav.popTo(index = toIndex)
 
     private fun childStackFactory(
         config: AuthConfig,
@@ -57,7 +52,7 @@ internal class AuthComponent(
             forgotComponentFactory(
                 componentContext = componentContext,
                 navigateToLogin = { _stackNav.replaceAll(AuthConfig.Login) },
-                navigateToConfirm = { _stackNav.pushNew(AuthConfig.SingUp) },
+                navigateToConfirm = { _stackNav.pushNew(AuthConfig.Confirm) },
                 showError = showError,
             )
         )
@@ -66,7 +61,7 @@ internal class AuthComponent(
             loginComponentFactory(
                 componentContext = componentContext,
                 navigateToSignUp = { _stackNav.pushNew(AuthConfig.SingUp) },
-                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Confirm) },
+                navigateForgotPassword = { _stackNav.pushNew(AuthConfig.Forgot) },
                 navigateToMain = navigateToMain,
                 showError = showError,
             )
@@ -76,7 +71,7 @@ internal class AuthComponent(
             signUpComponentFactory(
                 componentContext = componentContext,
                 navigateToLogin = { _stackNav.replaceAll(AuthConfig.Login) },
-                navigateToConfirm = { _stackNav.pushNew(AuthConfig.SingUp) },
+                navigateToConfirm = { _stackNav.pushNew(AuthConfig.Confirm) },
                 showError = showError,
             )
         )

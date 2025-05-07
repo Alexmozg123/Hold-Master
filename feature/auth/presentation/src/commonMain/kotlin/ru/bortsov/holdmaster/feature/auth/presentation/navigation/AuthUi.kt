@@ -1,5 +1,12 @@
 package ru.bortsov.holdmaster.feature.auth.presentation.navigation
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -19,10 +26,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.ExperimentalDecomposeApi
-import com.arkivanov.decompose.extensions.compose.stack.Children
-import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
-import com.arkivanov.decompose.extensions.compose.stack.animation.slide
-import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.ConfirmScreen
 import ru.bortsov.holdmaster.feature.auth.presentation.forgot.ForgotScreen
@@ -36,33 +40,36 @@ fun AuthUi(
     component: Auth,
 ) {
     val focusManager = LocalFocusManager.current
+    val stack = component.stack.subscribeAsState()
 
-    Children(
-        stack = component.stack,
+    Surface(
         modifier = modifier,
-        animation = predictiveBackAnimation(
-            backHandler = component.backHandler,
-            fallbackAnimation = stackAnimation(slide()),
-            onBack = component::onBackClicked,
-        ),
+        color = HoldMasterTheme.colors.secondaryBackground,
     ) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = HoldMasterTheme.colors.secondaryBackground
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectTapGestures { focusManager.clearFocus() }
+                },
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Bottom
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .pointerInput(Unit) {
-                        detectTapGestures { focusManager.clearFocus() }
-                    },
-                horizontalAlignment = Alignment.Start,
-                verticalArrangement = Arrangement.Bottom
+            AnimatedVisibility(
+                visible = stack.value.active.instance is Auth.Child.LoginChild,
+                enter = fadeIn(),
+                exit = fadeOut(),
             ) {
-                if (it.instance is Auth.Child.LoginChild) {
-                    TitleBlock(modifier = Modifier.padding(start = 28.dp, bottom = 66.dp))
-                }
+                TitleBlock(modifier = Modifier.padding(horizontal = 28.dp, vertical = 66.dp))
+            }
 
+            AnimatedContent(
+                targetState = stack.value.active.instance,
+                transitionSpec = {
+                    fadeIn() + slideInVertically(initialOffsetY = { it }) togetherWith
+                            fadeOut() + slideOutVertically(targetOffsetY = { it })
+                },
+            ) { child ->
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -82,22 +89,11 @@ fun AuthUi(
                             .fillMaxWidth()
                             .padding(horizontal = 28.dp)
                     ) {
-                        when (val child = it.instance) {
-                            is Auth.Child.LoginChild -> {
-                                LoginScreen(component = child.component)
-                            }
-
-                            is Auth.Child.SingUpChild -> {
-                                SingUpScreen(component = child.component)
-                            }
-
-                            is Auth.Child.ForgotPasswordChild -> {
-                                ForgotScreen(component = child.component)
-                            }
-
-                            is Auth.Child.ConfirmChild -> {
-                                ConfirmScreen(component = child.component)
-                            }
+                        when (child) {
+                            is Auth.Child.LoginChild -> LoginScreen(component = child.component)
+                            is Auth.Child.SingUpChild -> SingUpScreen(component = child.component)
+                            is Auth.Child.ForgotPasswordChild -> ForgotScreen(component = child.component)
+                            is Auth.Child.ConfirmChild -> ConfirmScreen(component = child.component)
                         }
                     }
                 }
