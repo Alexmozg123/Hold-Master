@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import holdmaster.feature.auth.presentation.generated.resources.Res
-import holdmaster.feature.auth.presentation.generated.resources.camera_icon
+import holdmaster.feature.auth.presentation.generated.resources.instruments_icon
 import org.jetbrains.compose.resources.painterResource
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.core.uikit.widgets.buttons.DarkButton
@@ -74,7 +74,7 @@ internal fun ForgotScreen(
 
         Row {
             Image(
-                painter = painterResource(Res.drawable.camera_icon),
+                painter = painterResource(Res.drawable.instruments_icon),
                 modifier = Modifier.size(32.dp),
                 contentDescription = null
             )

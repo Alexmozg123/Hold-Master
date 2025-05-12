@@ -27,9 +27,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import holdmaster.feature.auth.presentation.generated.resources.Res
-import holdmaster.feature.auth.presentation.generated.resources.camera_icon
-import holdmaster.feature.auth.presentation.generated.resources.eyes_close
-import holdmaster.feature.auth.presentation.generated.resources.eyes_open
+import holdmaster.feature.auth.presentation.generated.resources.close_eyes_icon
+import holdmaster.feature.auth.presentation.generated.resources.hello_icon
+import holdmaster.feature.auth.presentation.generated.resources.open_eyes_icon
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
@@ -55,7 +55,7 @@ internal fun LoginScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
-                painter = painterResource(Res.drawable.camera_icon),
+                painter = painterResource(Res.drawable.hello_icon),
                 modifier = Modifier.size(32.dp),
                 contentDescription = null
             )
@@ -87,12 +87,12 @@ internal fun LoginScreen(
                 if (state.isPasswordVisible) {
                     ImageButton(
                         onClick = { component.obtainEvent(LoginEvent.OnChangePasswordVisibilityClicked) },
-                        icon = Res.drawable.eyes_open,
+                        icon = Res.drawable.open_eyes_icon,
                     )
                 } else {
                     ImageButton(
                         onClick = { component.obtainEvent(LoginEvent.OnChangePasswordVisibilityClicked) },
-                        icon = Res.drawable.eyes_close,
+                        icon = Res.drawable.close_eyes_icon,
                     )
                 }
             },

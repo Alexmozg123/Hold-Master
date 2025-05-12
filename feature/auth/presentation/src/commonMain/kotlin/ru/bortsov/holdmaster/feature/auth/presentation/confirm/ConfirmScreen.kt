@@ -40,7 +40,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import holdmaster.feature.auth.presentation.generated.resources.Res
-import holdmaster.feature.auth.presentation.generated.resources.camera_icon
+import holdmaster.feature.auth.presentation.generated.resources.rocket_icon
 import org.jetbrains.compose.resources.painterResource
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.auth.presentation.confirm.Confirm.ConfirmEvent
@@ -87,7 +87,7 @@ internal fun ConfirmScreen(
 
         Row {
             Image(
-                painter = painterResource(Res.drawable.camera_icon),
+                painter = painterResource(Res.drawable.rocket_icon),
                 modifier = Modifier.size(32.dp),
                 contentDescription = null
             )
