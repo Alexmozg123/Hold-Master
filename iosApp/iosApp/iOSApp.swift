@@ -9,7 +9,7 @@ struct iOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ComposeView(root: appDeledate.rootComponent).ignoresSafeArea(.keyboard)
+            ComposeView(root: appDeledate.rootComponent).edgesIgnoringSafeArea(.all)
         }
     }
 }

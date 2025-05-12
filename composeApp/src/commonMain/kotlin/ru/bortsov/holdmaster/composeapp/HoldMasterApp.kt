@@ -1,7 +1,9 @@
 package ru.bortsov.holdmaster.composeapp
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.safeContent
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -42,26 +44,27 @@ private fun Children(
             fallbackAnimation = stackAnimation(fade()),
             onBack = component::onBackClicked,
         ),
-    ) {
-        Surface(
+    ) {child ->
+        Scaffold(
             modifier = Modifier.fillMaxSize(),
-            color = HoldMasterTheme.colors.primaryBackground
+            contentWindowInsets = WindowInsets.safeContent,
+            containerColor = HoldMasterTheme.colors.primaryBackground
         ) {
-            when (val child = it.instance) {
+            when (val current = child.instance) {
 
                 is Root.Child.SplashChild -> SplashScreen(
                     modifier = Modifier.fillMaxSize(),
-                    component = child.component
+                    component = current.component
                 )
 
                 is Root.Child.AuthChild -> AuthUi(
                     modifier = modifier.fillMaxSize(),
-                    component = child.component
+                    component = current.component
                 )
 
                 is Root.Child.TakePhotoChild -> TakePhotoScreen(
-                    modifier = Modifier.fillMaxSize(),
-                    component = child.component
+                    modifier = modifier.fillMaxSize(),
+                    component = current.component
                 )
 
                 is Root.Child.OnboardingChild -> Unit
@@ -69,8 +72,8 @@ private fun Children(
             }
 
             val dialogSlot by component.slot.subscribeAsState()
-            when (val child = dialogSlot.child?.instance) {
-                is Root.SlotChild.ErrorDialogChild -> ErrorAlert(component = child.component)
+            when (val current = dialogSlot.child?.instance) {
+                is Root.SlotChild.ErrorDialogChild -> ErrorAlert(component = current.component)
                 null -> Unit
             }
         }

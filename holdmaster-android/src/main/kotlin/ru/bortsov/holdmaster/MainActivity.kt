@@ -1,11 +1,18 @@
 package ru.bortsov.holdmaster
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
 import com.arkivanov.decompose.defaultComponentContext
@@ -39,6 +46,7 @@ class MainActivity : ComponentActivity() {
         val rootComponent = rootComponentFactory(defaultComponentContext())
 
         setContent {
+            SetSystemBarColors()
             HoldMasterApp(component = rootComponent, modifier = Modifier.fillMaxSize())
         }
     }
@@ -46,5 +54,33 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() {
         super.onDestroy()
         platformConfig.photoLauncher = null
+    }
+}
+
+@Composable
+private fun ComponentActivity.SetSystemBarColors() {
+
+    val lightScrim = rememberSaveable { Color.argb(0, 0x1b, 0x1b, 0x1b) }
+    val darkScrim = rememberSaveable { Color.argb(0, 0xFF, 0xFF, 0xFF) }
+    val isSystemInDarkTheme = isSystemInDarkTheme()
+
+    LaunchedEffect(isSystemInDarkTheme) {
+        if (isSystemInDarkTheme) {
+            enableEdgeToEdge(
+                statusBarStyle = SystemBarStyle.light(
+                    scrim = Color.TRANSPARENT,
+                    darkScrim = darkScrim
+                ),
+                navigationBarStyle = SystemBarStyle.light(
+                    scrim = Color.TRANSPARENT,
+                    darkScrim = Color.TRANSPARENT
+                )
+            )
+        } else {
+            enableEdgeToEdge(
+                statusBarStyle = SystemBarStyle.dark(lightScrim),
+                navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
+            )
+        }
     }
 }
