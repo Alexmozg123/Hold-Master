@@ -11,7 +11,7 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
-import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
 import ru.bortsov.holdmaster.composeapp.decompose.feature.onboarding.Onboarding
 import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.Tabs
@@ -67,8 +67,8 @@ class RootComponent(
             Root.Child.SplashChild(
                 splashComponentFactory(
                     componentContext = componentContext,
-                    navigateToTakePhotoFeature = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) },
-                    navigateToAuthFlowFeature = { _stackNav.pushNew(RootConfig.Stack.Auth) },
+                    navigateToMainFlowFeature = { _stackNav.replaceAll(RootConfig.Stack.Tabs) },
+                    navigateToAuthFlowFeature = { _stackNav.replaceAll(RootConfig.Stack.Auth) },
                 )
             )
         }
@@ -76,7 +76,7 @@ class RootComponent(
         RootConfig.Stack.Auth -> Root.Child.AuthChild(
             authComponentFactory(
                 componentContext = componentContext,
-                navigateToMain = { _stackNav.pushNew(RootConfig.Stack.TakePhoto) },
+                navigateToMain = { _stackNav.replaceAll(RootConfig.Stack.Tabs) },
                 showError = { _slotNav.activate(RootConfig.Slot.ErrorDialog(it)) }
             )
         )

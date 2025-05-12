@@ -4,13 +4,10 @@ import com.arkivanov.decompose.ComponentContext
 
 interface Splash {
 
-    fun onGoToPhotoFeatureClick()
-    fun onGoToAuthFlowFeature()
-
     interface Factory {
         operator fun invoke(
             componentContext: ComponentContext,
-            navigateToTakePhotoFeature: () -> Unit,
+            navigateToMainFlowFeature: () -> Unit,
             navigateToAuthFlowFeature: () -> Unit,
         ) : Splash
     }
