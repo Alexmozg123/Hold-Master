@@ -10,6 +10,7 @@ kmpConfig {
     sourceSets {
         commonMain.dependencies {
             api(project(":core:uikit"))
+            api(libs.compose.material.icons.core)
 
             implementation(composeExt.dependencies.components.resources)
             implementation(composeExt.dependencies.components.uiToolingPreview)
