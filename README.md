@@ -2,7 +2,14 @@
 
 Holds Master this is multiplatform mobile game build on IOS and Android targets.
 
-#### Auth screens view (for android)
+#### Auth screens
 
-| ![Screenshot_20250505_174157](https://github.com/user-attachments/assets/fe4322e8-7ac2-4b08-ac62-f23dadc8e401) | ![Screenshot_20250505_174319](https://github.com/user-attachments/assets/5ac0a705-9907-47a6-a114-fe998fd1bbb6) | ![Screenshot_20250505_174849](https://github.com/user-attachments/assets/a09d3fbf-08b6-45b8-a96a-e06da52c804c) | ![Screenshot_20250505_174305](https://github.com/user-attachments/assets/2f15da70-2a72-413e-928c-dc04e038498f) |
+##### For android
+
+| ![login_android](https://github.com/user-attachments/assets/0300d90b-769b-4540-8f3d-c6b3c5295683) | ![sing_up_android](https://github.com/user-attachments/assets/ce27da59-7b19-458a-8fea-d7473586c6bb) | ![forgot_android](https://github.com/user-attachments/assets/ecec762d-b862-43c6-a315-a9a195c8a03f) | ![confirm_android](https://github.com/user-attachments/assets/65f81081-d604-45cb-b0ee-b1f8b68c9567) |
+|:---:|:---:|:---:|:---:|
+
+##### For IOS
+
+| ![login_ios](https://github.com/user-attachments/assets/1f224db9-92a4-4160-9ac0-a2b5c2de9f31) | ![sing_up_ios](https://github.com/user-attachments/assets/89d112d2-a17c-40c3-b9a1-9d2e5b1fb032) | ![forgot_ios](https://github.com/user-attachments/assets/d4872fb8-9aea-4599-b9b1-448a655b1473) | ![confirm_ios](https://github.com/user-attachments/assets/b92e6688-cb6b-494e-876d-02744a7a3d4b) |
 |:---:|:---:|:---:|:---:|
