@@ -6,7 +6,6 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -146,8 +145,6 @@ internal fun ConfirmScreen(
     }
 }
 
-
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ConfirmTextInput(
     modifier: Modifier = Modifier,
@@ -183,6 +180,7 @@ private fun ConfirmTextInput(
             repeat(confirmCodeLength) { index ->
                 val char = confirmCode.getOrNull(index)
                 SymbolWindow(
+                    modifier = Modifier.weight(1f),
                     value = char?.takeIf { it.isLetterOrDigit() } ?: ' ',
                     isLoading = isLoading
                 )
@@ -217,7 +215,7 @@ private fun SymbolWindow(
 
     Box(
         modifier = modifier
-            .size(width = 76.dp, height = 104.dp)
+            .height(104.dp)
             .graphicsLayer {
                 alpha = if (isLoading) animatedAlpha else 1f
             }
