@@ -10,7 +10,6 @@
 
 | Category           | Technologies and Versions                                                                                                                 |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Language**       | Kotlin                                                                                                                                    |
 | **KMP**            | Kotlin Multiplatform, [KMP Compatibility Guide](https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility) |
 | **UI (Compose Multiplatform)** | Compose Multiplatform                                                                                                         |
 | **DI**             | Koin                                                                                                                                      |
