@@ -1,15 +1,48 @@
-### Official HoldMaster mobile app client
+# 🚀 Official HoldMaster Mobile App Client
 
-Holds Master this is multiplatform mobile game build on IOS and Android targets.
+**HoldMaster** is a cross-platform mobile game available on 📱 iOS and 🤖 Android.
 
-#### Auth screens
+[![View in Figma](https://img.shields.io/badge/📐%20View%20Design%20in%20Figma-blue?logo=figma&style=for-the-badge)](https://www.figma.com/design/l8Q7SArmqqTZSkFu3cNM3c/Hold-Master?node-id=0-1&t=EHPSefJeXlwE06T3-1)
 
-##### For android
+---
 
-| ![login_android](https://github.com/user-attachments/assets/0300d90b-769b-4540-8f3d-c6b3c5295683) | ![sing_up_android](https://github.com/user-attachments/assets/ce27da59-7b19-458a-8fea-d7473586c6bb) | ![forgot_android](https://github.com/user-attachments/assets/ecec762d-b862-43c6-a315-a9a195c8a03f) | ![confirm_android](https://github.com/user-attachments/assets/65f81081-d604-45cb-b0ee-b1f8b68c9567) |
+## 🛠️ Tech Stack
+
+| Category           | Technologies and Versions                                                                                                                 |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Language**       | Kotlin `2.1.20`                                                                                                                           |
+| **KMP**            | Kotlin Multiplatform, [KMP Compatibility Guide](https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility) |
+| **Android**        | AGP `8.7.2`, minSdk `24`, targetSdk `34`, compileSdk `35`                                                                                 |
+| **UI (Compose Multiplatform)** | Compose Multiplatform `1.8.0`                                                                                               |
+| **DI**             | Koin `4.1.0-Beta1`                                                                                                                        |
+| **Navigation**     | Decompose `3.3.0`, Essenty `2.5.0`                                                                                                        |
+| **Concurrency**    | Coroutines `1.10.1`                                                                                                                       |
+| **Networking**     | Ktor `3.1.1`, Serialization JSON `1.8.0`                                                                                                  |
+| **Logging**        | Napier `2.7.1`                                                                                                                            |
+| **Date/Time**      | kotlinx-datetime `0.6.2`                                                                                                                  |
+| **Images**         | Coil `3.0.4`                                                                                                                              |
+| **Settings**       | Multiplatform Settings `1.3.0`                                                                                                            |
+| **Gradle Plugins** | Compose, Kotlin, Android, Serialization, KSP, ManifestGuard                                                                              |
+
+---
+
+## 🔐 Auth Screens
+
+### 🤖 Android
+
+| ![login_android](https://github.com/user-attachments/assets/0300d90b-769b-4540-8f3d-c6b3c5295683) | ![sign_up_android](https://github.com/user-attachments/assets/ce27da59-7b19-458a-8fea-d7473586c6bb) | ![forgot_android](https://github.com/user-attachments/assets/ecec762d-b862-43c6-a315-a9a195c8a03f) | ![confirm_android](https://github.com/user-attachments/assets/65f81081-d604-45cb-b0ee-b1f8b68c9567) |
 |:---:|:---:|:---:|:---:|
 
-##### For IOS
+---
 
-| ![login_ios](https://github.com/user-attachments/assets/1f224db9-92a4-4160-9ac0-a2b5c2de9f31) | ![sing_up_ios](https://github.com/user-attachments/assets/89d112d2-a17c-40c3-b9a1-9d2e5b1fb032) | ![forgot_ios](https://github.com/user-attachments/assets/d4872fb8-9aea-4599-b9b1-448a655b1473) | ![confirm_ios](https://github.com/user-attachments/assets/b92e6688-cb6b-494e-876d-02744a7a3d4b) |
+### 🍏 iOS
+
+| ![login_ios](https://github.com/user-attachments/assets/1f224db9-92a4-4160-9ac0-a2b5c2de9f31) | ![sign_up_ios](https://github.com/user-attachments/assets/89d112d2-a17c-40c3-b9a1-9d2e5b1fb032) | ![forgot_ios](https://github.com/user-attachments/assets/d4872fb8-9aea-4599-b9b1-448a655b1473) | ![confirm_ios](https://github.com/user-attachments/assets/b92e6688-cb6b-494e-876d-02744a7a3d4b) |
 |:---:|:---:|:---:|:---:|
+
+---
+
+## 📎 Additional
+
+- 🔗 [Design in Figma](https://www.figma.com/design/l8Q7SArmqqTZSkFu3cNM3c/Hold-Master?node-id=0-1)
+- 📅 Status: `In development`
