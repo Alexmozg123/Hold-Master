@@ -10,19 +10,18 @@
 
 | Category           | Technologies and Versions                                                                                                                 |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Language**       | Kotlin `2.1.20`                                                                                                                           |
+| **Language**       | Kotlin                                                                                                                                    |
 | **KMP**            | Kotlin Multiplatform, [KMP Compatibility Guide](https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility) |
-| **Android**        | AGP `8.7.2`, minSdk `24`, targetSdk `34`, compileSdk `35`                                                                                 |
-| **UI (Compose Multiplatform)** | Compose Multiplatform `1.8.0`                                                                                               |
-| **DI**             | Koin `4.1.0-Beta1`                                                                                                                        |
-| **Navigation**     | Decompose `3.3.0`, Essenty `2.5.0`                                                                                                        |
-| **Concurrency**    | Coroutines `1.10.1`                                                                                                                       |
-| **Networking**     | Ktor `3.1.1`, Serialization JSON `1.8.0`                                                                                                  |
-| **Logging**        | Napier `2.7.1`                                                                                                                            |
-| **Date/Time**      | kotlinx-datetime `0.6.2`                                                                                                                  |
-| **Images**         | Coil `3.0.4`                                                                                                                              |
-| **Settings**       | Multiplatform Settings `1.3.0`                                                                                                            |
-| **Gradle Plugins** | Compose, Kotlin, Android, Serialization, KSP, ManifestGuard                                                                              |
+| **UI (Compose Multiplatform)** | Compose Multiplatform                                                                                                         |
+| **DI**             | Koin                                                                                                                                      |
+| **Navigation**     | Decompose, Essenty                                                                                                                        |
+| **Concurrency**    | Coroutines                                                                                                                                |
+| **Networking**     | Ktor, Serialization JSON                                                                                                                  |
+| **Logging**        | Napier                                                                                                                                    |
+| **Date/Time**      | kotlinx-datetime                                                                                                                          |
+| **Images**         | Coil                                                                                                                                      |
+| **Settings**       | Multiplatform Settings                                                                                                                    |
+| **Gradle Plugins** | Compose, Kotlin, Android, Serialization, KSP, ManifestGuard                                                                               |
 
 ---
 
