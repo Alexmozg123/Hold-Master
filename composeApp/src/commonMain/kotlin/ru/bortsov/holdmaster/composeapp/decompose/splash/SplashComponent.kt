@@ -28,7 +28,8 @@ internal class SplashComponent(
                         navigateToMainFlowFeature()
                     }
                     AuthState.NotAuthorized -> withContext(Dispatchers.Main) {
-                        navigateToAuthFlowFeature()
+                        // TODO: поменять на navigateToAuthFlowFeature()
+                        navigateToMainFlowFeature()
                     }
                 }
             }

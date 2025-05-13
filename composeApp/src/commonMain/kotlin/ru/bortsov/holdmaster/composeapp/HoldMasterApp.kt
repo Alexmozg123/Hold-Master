@@ -14,6 +14,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import ru.bortsov.holdmaster.composeapp.decompose.Root
+import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.TabsUi
 import ru.bortsov.holdmaster.composeapp.decompose.splash.SplashScreen
 import ru.bortsov.holdmaster.composeapp.error.ErrorAlert
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
@@ -62,13 +63,17 @@ private fun Children(
                     component = current.component
                 )
 
+                is Root.Child.TabsChild -> TabsUi(
+                    modifier = modifier.fillMaxSize(),
+                    component = current.component
+                )
+
                 is Root.Child.TakePhotoChild -> TakePhotoScreen(
                     modifier = modifier.fillMaxSize(),
                     component = current.component
                 )
 
                 is Root.Child.OnboardingChild -> Unit
-                is Root.Child.TabsChild -> Unit
             }
 
             val dialogSlot by component.slot.subscribeAsState()

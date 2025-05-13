@@ -5,6 +5,7 @@ import io.github.aakira.napier.Napier
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import ru.bortsov.holdmaster.composeapp.decompose.Root
+import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.tabModule
 import ru.bortsov.holdmaster.core.base.coreModule
 import ru.bortsov.holdmaster.core.base.di.Inject
 import ru.bortsov.holdmaster.core.base.di.Inject.di
@@ -26,6 +27,7 @@ object PlatformSDK {
                 modules(
                     appModule,
                     coreModule,
+                    tabModule,
                     umbrellaModule,
                     photoDataModule,
                     photoPresentationModule,
