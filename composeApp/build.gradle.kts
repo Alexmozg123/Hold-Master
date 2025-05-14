@@ -15,6 +15,14 @@ kotlin {
             implementation(projects.feature.photo.data)
             implementation(projects.feature.photo.presentation)
 
+            implementation(projects.feature.game.api)
+            implementation(projects.feature.game.data)
+            implementation(projects.feature.game.presentation)
+
+            implementation(projects.feature.profile.api)
+            implementation(projects.feature.profile.data)
+            implementation(projects.feature.profile.presentation)
+
             implementation(projects.feature.auth.api)
             implementation(projects.feature.auth.data)
             implementation(projects.feature.auth.presentation)

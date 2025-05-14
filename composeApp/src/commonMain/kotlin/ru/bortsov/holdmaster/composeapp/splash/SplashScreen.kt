@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose.splash
+package ru.bortsov.holdmaster.composeapp.splash
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface

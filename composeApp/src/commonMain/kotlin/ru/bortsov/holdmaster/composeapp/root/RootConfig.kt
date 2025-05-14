@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose
+package ru.bortsov.holdmaster.composeapp.root
 
 import kotlinx.serialization.Serializable
 import ru.bortsov.holdmaster.core.utils.RootError
@@ -16,8 +16,6 @@ sealed interface RootConfig {
     sealed interface Stack : RootConfig {
         @Serializable
         data object Splash : Stack
-        @Serializable
-        data object Onboarding : Stack
         @Serializable
         data object Tabs : Stack
         @Serializable

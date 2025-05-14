@@ -38,6 +38,14 @@ include(
     ":feature:photo:data",
     ":feature:photo:presentation",
 
+    ":feature:game:api",
+    ":feature:game:data",
+    ":feature:game:presentation",
+
+    ":feature:profile:api",
+    ":feature:profile:data",
+    ":feature:profile:presentation",
+
     ":feature:auth:api",
     ":feature:auth:data",
     ":feature:auth:presentation",
