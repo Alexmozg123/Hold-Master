@@ -1,8 +1,8 @@
-package ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.game
+package ru.bortsov.holdmaster.feature.game.presentation
 
 import com.arkivanov.decompose.ComponentContext
 
-class GameComponent(
+internal class GameComponent(
     componentContext: ComponentContext
 ): Game, ComponentContext by componentContext {
 
