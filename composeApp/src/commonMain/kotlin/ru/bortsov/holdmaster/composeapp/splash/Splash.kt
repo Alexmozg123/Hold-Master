@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose.splash
+package ru.bortsov.holdmaster.composeapp.splash
 
 import com.arkivanov.decompose.ComponentContext
 

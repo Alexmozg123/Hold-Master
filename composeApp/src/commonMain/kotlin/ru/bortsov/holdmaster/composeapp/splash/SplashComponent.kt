@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose.splash
+package ru.bortsov.holdmaster.composeapp.splash
 
 import com.arkivanov.decompose.ComponentContext
 import kotlinx.coroutines.Dispatchers
@@ -28,8 +28,7 @@ internal class SplashComponent(
                         navigateToMainFlowFeature()
                     }
                     AuthState.NotAuthorized -> withContext(Dispatchers.Main) {
-                        // TODO: поменять на navigateToAuthFlowFeature()
-                        navigateToMainFlowFeature()
+                        navigateToAuthFlowFeature()
                     }
                 }
             }
