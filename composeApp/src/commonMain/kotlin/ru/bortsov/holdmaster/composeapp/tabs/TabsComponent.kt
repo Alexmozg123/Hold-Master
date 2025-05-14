@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose.feature.tabs
+package ru.bortsov.holdmaster.composeapp.tabs
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -6,9 +6,9 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.Tabs.Child
-import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.game.Game
-import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.profile.Profile
+import ru.bortsov.holdmaster.composeapp.tabs.Tabs.Child
+import ru.bortsov.holdmaster.feature.game.presentation.Game
+import ru.bortsov.holdmaster.feature.profile.presentation.Profile
 
 class TabsComponent(
     componentContext: ComponentContext,

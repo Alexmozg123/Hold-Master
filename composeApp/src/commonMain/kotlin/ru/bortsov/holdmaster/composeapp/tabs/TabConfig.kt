@@ -1,4 +1,4 @@
-package ru.bortsov.holdmaster.composeapp.decompose.feature.tabs
+package ru.bortsov.holdmaster.composeapp.tabs
 
 import kotlinx.serialization.Serializable
 
