@@ -1,8 +1,8 @@
-package ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.profile
+package ru.bortsov.holdmaster.feature.profile.presentation
 
 import com.arkivanov.decompose.ComponentContext
 
-class ProfileComponent(
+internal class ProfileComponent(
     componentContext: ComponentContext
 ): Profile, ComponentContext by componentContext {
 
