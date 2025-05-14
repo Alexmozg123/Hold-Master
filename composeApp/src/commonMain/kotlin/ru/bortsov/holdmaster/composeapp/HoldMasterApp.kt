@@ -13,9 +13,9 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import ru.bortsov.holdmaster.composeapp.decompose.Root
-import ru.bortsov.holdmaster.composeapp.decompose.feature.tabs.TabsUi
-import ru.bortsov.holdmaster.composeapp.decompose.splash.SplashScreen
+import ru.bortsov.holdmaster.composeapp.root.Root
+import ru.bortsov.holdmaster.composeapp.tabs.ui.TabsUi
+import ru.bortsov.holdmaster.composeapp.splash.SplashScreen
 import ru.bortsov.holdmaster.composeapp.error.ErrorAlert
 import ru.bortsov.holdmaster.core.uikit.HoldMasterTheme
 import ru.bortsov.holdmaster.feature.auth.presentation.navigation.AuthUi
@@ -72,8 +72,6 @@ private fun Children(
                     modifier = modifier.fillMaxSize(),
                     component = current.component
                 )
-
-                is Root.Child.OnboardingChild -> Unit
             }
 
             val dialogSlot by component.slot.subscribeAsState()
