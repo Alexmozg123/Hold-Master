@@ -18,7 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import com.arkivanov.decompose.defaultComponentContext
 import kotlinx.coroutines.launch
 import ru.bortsov.holdmaster.composeapp.HoldMasterApp
-import ru.bortsov.holdmaster.composeapp.decompose.Root
+import ru.bortsov.holdmaster.composeapp.root.Root
 import ru.bortsov.holdmaster.core.base.di.Inject
 import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
 import ru.bortsov.holdmaster.feature.photo.api.PhotoPusher
