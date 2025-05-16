@@ -4,7 +4,7 @@ import HoldMasterIOShared
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    var rootComponent: RootComponent
+    var rootComponent: Root
 
     override init() {
         // Инициализация Koin
