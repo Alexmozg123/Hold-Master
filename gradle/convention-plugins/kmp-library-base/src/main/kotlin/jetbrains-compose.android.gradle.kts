@@ -1,9 +1,8 @@
 import utils.androidConfig
 import utils.applyIfNeeded
-import utils.composeExt
 import utils.kmpConfig
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.invoke
+import utils.libs
 
 plugins.applyIfNeeded("jetbrains-compose.base")
 plugins.apply("jetpack-compose.base")
@@ -17,11 +16,8 @@ kmpConfig {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(composeExt.dependencies.preview)
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.compose.ui.tooling)
         }
-    }
-
-    dependencies {
-        "debugImplementation"(composeExt.dependencies.uiTooling)
     }
 }

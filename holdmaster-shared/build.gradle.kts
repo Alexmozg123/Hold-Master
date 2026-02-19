@@ -12,8 +12,8 @@ kotlin {
             api(libs.essenty.lifecycle)
             api(libs.koin.core)
 
-            implementation(compose.runtime)
-            implementation(compose.ui)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
         }
     }
 

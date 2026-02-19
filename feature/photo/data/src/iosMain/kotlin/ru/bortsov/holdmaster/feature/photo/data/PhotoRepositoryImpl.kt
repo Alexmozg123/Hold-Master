@@ -22,7 +22,6 @@ import platform.UIKit.UIImagePickerControllerOriginalImage
 import platform.UIKit.UIImagePickerControllerSourceType
 import platform.UIKit.UINavigationControllerDelegateProtocol
 import platform.darwin.NSObject
-import platform.darwin.TARGET_OS_SIMULATOR
 import platform.posix.memcpy
 import ru.bortsov.holdmaster.core.base.platform.PlatformConfig
 import ru.bortsov.holdmaster.feature.photo.api.PhotoRepository
@@ -73,22 +72,8 @@ internal actual class PhotoRepositoryImpl actual constructor(
     private fun initialSettings() {
         imagePicker.setAllowsEditing(true)
         imagePicker.setDelegate(cameraDelegate)
-
-        val isSimulator = TARGET_OS_SIMULATOR != 0
-        chooseSourceTypeForImagePicker(isSimulator)
-    }
-
-    /**
-     * Если стартовать на IOS симуляторе, то важно назначит галерею вместо камеры,
-     * так как на симуряторе нет симуляции камеры.
-     */
-    private fun chooseSourceTypeForImagePicker(isSimulator: Boolean) {
-        if (isSimulator) {
-            imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeSavedPhotosAlbum)
-        } else {
-            imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeCamera)
-            imagePicker.setCameraCaptureMode(UIImagePickerControllerCameraCaptureMode.UIImagePickerControllerCameraCaptureModePhoto)
-        }
+        imagePicker.setSourceType(UIImagePickerControllerSourceType.UIImagePickerControllerSourceTypeCamera)
+        imagePicker.setCameraCaptureMode(UIImagePickerControllerCameraCaptureMode.UIImagePickerControllerCameraCaptureModePhoto)
     }
 
     @OptIn(ExperimentalForeignApi::class)
