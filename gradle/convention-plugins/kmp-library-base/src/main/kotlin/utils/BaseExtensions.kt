@@ -19,7 +19,6 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.the
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.compose.ComposeExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
@@ -70,10 +69,6 @@ private val Project.kmpExtension: KotlinMultiplatformExtension
 internal inline fun Project.kmpConfig(
     block: KotlinMultiplatformExtension.() -> Unit
 ) = kmpExtension.block()
-
-internal val Project.composeExt: ComposeExtension
-    get() = extensions.findByType(ComposeExtension::class.java)
-        ?: error("Compose plugin is not applied")
 
 internal fun LibrariesForLibs.javaVersion(target: ProjectTargets.JvmTarget): JavaVersion {
     val jdkVersion = jvmVersion(target)

@@ -1,9 +1,17 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.holdmaster.android.base)
     alias(libs.plugins.holdmaster.compose.jetpack.base)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.manifestGuard)
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget(libs.versions.java.get())
+    }
 }
 
 android {
@@ -25,10 +33,6 @@ android {
     lint {
         checkReleaseBuilds = false
         checkDependencies = true
-    }
-
-    kotlinOptions {
-        jvmTarget = libs.versions.java.get()
     }
 }
 

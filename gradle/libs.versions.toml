@@ -3,38 +3,48 @@
 ## KMP Compatibility guide <https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility>
 
 agp = "8.7.2"
-kotlin = "2.1.20"
+kotlin = "2.3.10"
 
 java = "17"
-android-compileSdk = "35"
+android-compileSdk = "36"
 android-minSdk = "24"
-android-targetSdk = "34"
-androidx-activityCompose = "1.10.1"
-androidx-appcompat = "1.7.0"
-androidx-core = "1.16.0"
+android-targetSdk = "36"
+androidx-activityCompose = "1.12.4"
+androidx-appcompat = "1.7.1"
+androidx-core = "1.17.0"
 androidx-annotation = "1.9.1"
-androidx-espresso-core = "3.6.1"
-decompose = "3.3.0"
+androidx-espresso-core = "3.7.0"
+decompose = "3.4.0"
 essenty = "2.5.0"
-androidx-material = "1.12.0"
-androidx-test-junit = "1.2.1"
-compose-multiplatform = "1.7.3"
+androidx-material = "1.13.0"
+androidx-test-junit = "1.3.0"
+compose-multiplatform = "1.10.1"
+compose-multiplatform-material3 = "1.9.0"
 icons-core = "1.7.3"
 junit = "4.13.2"
-kotlinx-coroutines = "1.10.1"
-kotlinx-serialization = "1.8.0"
-kotlinx-datetime = "0.6.2"
-ktor = "3.1.1"
-koin = "4.1.0-Beta1"
+kotlinx-coroutines = "1.10.2"
+kotlinx-serialization = "1.10.0"
+kotlinx-datetime = "0.7.1"
+ktor = "3.4.0"
+koin = "4.1.1"
 google-ksp = "2.1.10-1.0.30"
-manifestGuard = "1.0.0"
-activityKtx = "1.10.1"
-coil = "3.0.4"
+manifestGuard = "1.2.0"
+activityKtx = "1.12.4"
+coil = "3.3.0"
 napier = "2.7.1"
 multiplatform-settings = "1.3.0"
 
 
 [libraries]
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-multiplatform" }
+compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose-multiplatform" }
+compose-ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose-multiplatform" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-multiplatform" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose-multiplatform-material3" }
+compose-material3-adaptive-navigation-suite = { module = "org.jetbrains.compose.material3:material3-adaptive-navigation-suite", version.ref = "compose-multiplatform-material3" }
+
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 

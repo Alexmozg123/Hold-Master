@@ -14,12 +14,12 @@ compose.resources {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            api(compose.runtime)
-            api(compose.foundation)
-            api(compose.material3)
-            api(compose.components.uiToolingPreview)
-            api(compose.material3AdaptiveNavigationSuite)
-            api(compose.ui)
+            api(libs.compose.runtime)
+            api(libs.compose.foundation)
+            api(libs.compose.ui)
+            api(libs.compose.ui.tooling.preview )
+            api(libs.compose.material3)
+            api(libs.compose.material3.adaptive.navigation.suite)
         }
     }
 }
